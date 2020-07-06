@@ -119,6 +119,7 @@ dcmInverted = spm_dcm_erp(dcmModel);
 %--------------------------------------------------------------------------
 % Explore Results
 %--------------------------------------------------------------------------
+figure;
 imagesc(exp(dcmInverted.Ep.B{1}));
 colormap(jet);
 colorbar;
@@ -129,7 +130,10 @@ labelNames = options.dcm.sources.name;
 set(gca,'XTickLabel',labelNames);   % gca gets the current axis
 set(gca,'YTickLabel',labelNames);    % gca gets the current axis
 
-spm_dcm_erp_results(dcmInverted);
+spm_dcm_erp_results(dcmInverted,'trial-specific effects');
+spm_dcm_erp_results(dcmInverted,'response');
+spm_dcm_erp_results(dcmInverted,'scalp maps');
+
 
 
 
