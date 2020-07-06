@@ -131,4 +131,25 @@ switch options.stats.design
 end
 options.stats.pValueMode    = 'clusterFWE';
 options.stats.exampleID     = '1';
+
+%-- dcm ----------------------------------------------------------------%
+options.dcm.subjectIDs = options.subjects;
+options.dcm.overwrite  = 0; % whether to overwrite any previous statsDCM.options.analysis = 'ERP'; % analyze evoked responses
+options.dcm.model      = 'ERP'; % ERP model
+options.dcm.spatial    = 'ECD'; % spatial model
+options.dcm.Tdcm(1)    = 0;     % start of peri-stimulus time to be modelled
+options.dcm.Tdcm(2)    = 350;   % end of peri-stimulus time to be modelled
+options.dcm.Nmodes     = 8;     % nr of modes for data selection
+options.dcm.h          = 1;     % nr of DCT components
+options.dcm.onset      = 60;    % selection of onset (prior mean)
+options.dcm.D          = 1;     % downsampling
+options.dcm.Nmax       = 300;   % maximal number of EM iterations
+options.dcm.trials     = [2 3]; % index of ERPs within ERP/ERF file: trials with high and low PE, and not other
+options.dcm.sources.name ...
+                       = {'left A1', 'right A1', 'left STG', 'right STG', 'right IFG'};
+options.dcm.sources.mni=[[-42; -22; 7] [46; -14; 8] [-61; -32; 8] [59; -25; 8] [46; 20; 8]];
+options.dcm.contrast.code...
+                       =[-1; 1];
+options.dcm.contrast.type...
+                        ='Difference effect';
 end

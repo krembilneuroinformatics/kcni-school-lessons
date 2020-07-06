@@ -32,4 +32,7 @@ options.stats.mode = 'modelbased';
 options.stats.design = 'epsilon';
 mmn_1stlevel(id, options);
 
+%% Optional: DCM analysis
+mmn_dcm(id, options);
+
 

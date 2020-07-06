@@ -46,17 +46,7 @@ DCM.xY.Dfile = details.erpfile;
 %--------------------------------------------------------------------------
 % Parameters and options used for setting up model
 %--------------------------------------------------------------------------
-DCM.options.analysis = 'ERP'; % analyze evoked responses
-DCM.options.model    = 'ERP'; % ERP model
-DCM.options.spatial  = 'ECD'; % spatial model
-DCM.options.Tdcm(1)  = 0;     % start of peri-stimulus time to be modelled
-DCM.options.Tdcm(2)  = 350;   % end of peri-stimulus time to be modelled
-DCM.options.Nmodes   = 8;     % nr of modes for data selection
-DCM.options.h        = 1;     % nr of DCT components
-DCM.options.onset    = 60;    % selection of onset (prior mean)
-DCM.options.D        = 1;     % downsampling
-DCM.options.Nmax     = 300;   % maximal number of EM iterations
-DCM.options.trials   = [2 3]; % index of ERPs within ERP/ERF file: trials with high and low PE, and not other
+DCM.options = options.dcm;
 
 %--------------------------------------------------------------------------
 % Data and spatial model
@@ -66,8 +56,8 @@ DCM = spm_dcm_erp_data(DCM);
 %--------------------------------------------------------------------------
 % Location priors for dipoles
 %--------------------------------------------------------------------------
-DCM.Lpos = [[-42; -22; 7] [46; -14; 8] [-61; -32; 8] [59; -25; 8] [46; 20; 8]];
-DCM.Sname = {'left A1', 'right A1', 'left STG', 'right STG', 'right IFG'};
+DCM.Lpos  = options.dcm.sources.mni;
+DCM.Sname = options.dcm.sources.name;
 
 %--------------------------------------------------------------------------
 % Spatial model
@@ -106,14 +96,15 @@ DCM.B{1,1} = [1 0 1 0 0
               0 1 0 0 1
               0 0 0 1 0];
 
+% Input
 DCM.C = [1; 1; 0; 0; 0];
 
 
 %--------------------------------------------------------------------------
 % Between trial effects
 %--------------------------------------------------------------------------
-DCM.xU.X = [-1; 1];
-DCM.xU.name = {'linear effect'};
+DCM.xU.X    = options.dcm.contrast.code;
+DCM.xU.name = options.dcm.contrast.type;
 
 
 %--------------------------------------------------------------------------
