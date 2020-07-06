@@ -13,7 +13,7 @@ end
 cd(options.workdir);
 diary('analysis_setup.log');
 
-for subfolder = {'config', 'subjects', 'tones', 'erp', 'stats_erp', 'stats_model'}
+for subfolder = {'config', 'subjects'}
     if ~exist(fullfile(options.workdir, char(subfolder)), 'dir')
         mkdir(fullfile(options.workdir, char(subfolder)));
     end
