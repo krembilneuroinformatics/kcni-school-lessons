@@ -68,29 +68,33 @@ dcmModel = spm_dcm_erp_dipfit(dcmNetwork);
 % Specify connectivity model
 %--------------------------------------------------------------------------
 % Forward connections
-dcmModel.A{1,1} = [0 0 0 0 0
+dcmModel.A{1,1} = ...
+             [0 0 0 0 0
               0 0 0 0 0
               1 0 0 0 0
               0 1 0 0 0
               0 0 0 1 0];
           
 % Backward connections
-dcmModel.A{1,2} = [0 0 1 0 0
+dcmModel.A{1,2} = ...
+             [0 0 1 0 0
               0 0 0 1 0
               0 0 0 0 0
               0 0 0 0 1
               0 0 0 0 0];
           
 % Lateral connections          
-dcmModel.A{1,3} = [0 0 0 0 0
-              0 0 0 0 0
+dcmModel.A{1,3} = ...
+             [0 1 0 0 0
+              1 0 0 0 0
               0 0 0 1 0
               0 0 1 0 0
               0 0 0 0 0];
 
 % PE modulation
-dcmModel.B{1,1} = [1 0 1 0 0
-              0 1 0 1 0
+dcmModel.B{1,1} = ...
+             [0 0 1 0 0
+              0 0 0 1 0
               1 0 0 0 0
               0 1 0 0 1
               0 0 0 1 0];
@@ -115,6 +119,16 @@ dcmInverted = spm_dcm_erp(dcmModel);
 %--------------------------------------------------------------------------
 % Explore Results
 %--------------------------------------------------------------------------
+imagesc(exp(dcmInverted.Ep.B{1}));
+colormap(jet);
+colorbar;
+
+% then to set the axis titles you'll have to use
+% Please note the curly braces for the cell array
+labelNames = options.dcm.sources.name;
+set(gca,'XTickLabel',labelNames);   % gca gets the current axis
+set(gca,'YTickLabel',labelNames);    % gca gets the current axis
+
 spm_dcm_erp_results(dcmInverted);
 
 
