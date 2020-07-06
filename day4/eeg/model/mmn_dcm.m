@@ -40,78 +40,82 @@ file_name = details.dcmfile;
 % Data filename
 %--------------------------------------------------------------------------
 % Set data file name
-DCM.xY.Dfile = details.erpfile;
-
+dcmData.xY.Dfile = details.erpfile;
 
 %--------------------------------------------------------------------------
 % Parameters and options used for setting up model
 %--------------------------------------------------------------------------
-DCM.options = options.dcm;
+dcmData.options = options.dcm;
 
 %--------------------------------------------------------------------------
 % Data and spatial model
 %--------------------------------------------------------------------------
-DCM = spm_dcm_erp_data(DCM);
+dcmNetwork = spm_dcm_erp_data(dcmData);
 
 %--------------------------------------------------------------------------
 % Location priors for dipoles
 %--------------------------------------------------------------------------
-DCM.Lpos  = options.dcm.sources.mni;
-DCM.Sname = options.dcm.sources.name;
+dcmNetwork.Lpos  = options.dcm.sources.mni;
+dcmNetwork.Sname = options.dcm.sources.name;
 
 %--------------------------------------------------------------------------
 % Spatial model
 %--------------------------------------------------------------------------
-DCM = spm_dcm_erp_dipfit(DCM);
+dcmModel = spm_dcm_erp_dipfit(dcmNetwork);
 
 
 %--------------------------------------------------------------------------
 % Specify connectivity model
 %--------------------------------------------------------------------------
 % Forward connections
-DCM.A{1,1} = [0 0 0 0 0
+dcmModel.A{1,1} = [0 0 0 0 0
               0 0 0 0 0
               1 0 0 0 0
               0 1 0 0 0
               0 0 0 1 0];
           
 % Backward connections
-DCM.A{1,2} = [0 0 1 0 0
+dcmModel.A{1,2} = [0 0 1 0 0
               0 0 0 1 0
               0 0 0 0 0
               0 0 0 0 1
               0 0 0 0 0];
           
 % Lateral connections          
-DCM.A{1,3} = [0 0 0 0 0
+dcmModel.A{1,3} = [0 0 0 0 0
               0 0 0 0 0
               0 0 0 1 0
               0 0 1 0 0
               0 0 0 0 0];
 
 % PE modulation
-DCM.B{1,1} = [1 0 1 0 0
+dcmModel.B{1,1} = [1 0 1 0 0
               0 1 0 1 0
               1 0 0 0 0
               0 1 0 0 1
               0 0 0 1 0];
 
 % Input
-DCM.C = [1; 1; 0; 0; 0];
+dcmModel.C = [1; 1; 0; 0; 0];
 
 
 %--------------------------------------------------------------------------
 % Between trial effects
 %--------------------------------------------------------------------------
-DCM.xU.X    = options.dcm.contrast.code;
-DCM.xU.name = options.dcm.contrast.type;
+dcmModel.xU.X    = options.dcm.contrast.code;
+dcmModel.xU.name = options.dcm.contrast.type;
 
 
 %--------------------------------------------------------------------------
 % Invert
 %--------------------------------------------------------------------------
-DCM.name = file_name;
-DCM = spm_dcm_erp(DCM);
+dcmModel.name = file_name;
+dcmInverted = spm_dcm_erp(dcmModel);
+
+%--------------------------------------------------------------------------
+% Explore Results
+%--------------------------------------------------------------------------
+spm_dcm_erp_results(dcmInverted);
 
 
 

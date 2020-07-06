@@ -151,5 +151,5 @@ options.dcm.sources.mni=[[-42; -22; 7] [46; -14; 8] [-61; -32; 8] [59; -25; 8] [
 options.dcm.contrast.code...
                        =[-1; 1];
 options.dcm.contrast.type...
-                        ='Difference effect';
+                        ={'Difference effect'};
 end
