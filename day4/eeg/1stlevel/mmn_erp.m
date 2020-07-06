@@ -116,8 +116,8 @@ catch
             triallist = {'standard', 'Standard Tones', [0 0 1]; ...
                         'deviant', 'Deviant Tones', [1 0 0]};
         case {'lowhighEpsi2', 'lowhighEpsi3'}
-            triallist = {'low', 'Lowest 10 %', [0 0 1]; ...
-                        'high', 'Highest 10 %', [1 0 0]};
+            triallist = {'low', 'Lowest 15 %', [0 0 1]; ...
+                        'high', 'Highest 15 %', [1 0 0]};
         case 'tone'
             triallist = {'tone', 'All tone events', [0 0 1]};
     end
