@@ -1,0 +1,3 @@
+[submodule "envs/kcni-school-envs"]
+	path = envs/kcni-school-envs
+	url = https://github.com/edickie/kcni-school-envs
