@@ -8,7 +8,7 @@ A collection of code and lessons for the KCNI Summer School
 Note that this repo uses submodules so to get everything use:
 
 ```sh
-git clone --recurse-submodules https://github.com/edickie/kcni-school-envs.git
+git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-school-lessons
 ```
 
 # The weekly schedule:
