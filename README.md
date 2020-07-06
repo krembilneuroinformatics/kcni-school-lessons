@@ -1,13 +1,25 @@
 # kcni-school-lessons
 A collection of code and lessons for the KCNI Summer School
 
-The weekly schedule:
+## How to use git to clone this repo to your own computer
+
+** Note: When participating in the summer school, we recommend cloning the git repo from inside the computational env (i.e. the docker)** 
+
+Note that this repo uses submodules so to get everything use:
+
+```sh
+git clone --recurse-submodules https://github.com/edickie/kcni-school-envs.git
+```
+
+# The weekly schedule:
 
 ## Day 1: Reproducible Science and Psychiatric Genetics
 
 **Instructors:** Daniel Felsky, Sean Hill, Erin Dickie
 
 **TA's:** Dr. Michael Wainberg & Sajel Patel
+
+**Computing Env** we will use our custom rstudio docker..[click here for install instructions](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/envs#kcni-school-envs). Also grab Erin's reproducibiltiy slides from [here]( https://docs.google.com/presentation/d/1weWaancrZH39zGSc_5Ew2k6chshadA3QP-H2wRTSJyM/edit?usp=sharing)
 
 | Time (EST) | Session | |
 |---- |----|---|
