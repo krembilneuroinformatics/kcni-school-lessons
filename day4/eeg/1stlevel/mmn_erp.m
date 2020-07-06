@@ -38,29 +38,29 @@ try
     end
 catch
     fprintf('\nAveraging subject %s ...\n\n', id);
-
+    
     %-- preparation -------------------------------------------------------------------------------%
     % check destination folder
     if ~exist(details.erproot, 'dir')
         mkdir(details.erproot);
     end
     cd(details.erproot);
-
+    
     % work on final preprocessed file
     switch options.conversion.mode
         case 'modelbased'
-            % in the modelbased analysis, we have to remove the first EEG trial because the model 
-            % only defines PEs starting from the 2nd tone (1st observed transition)            
-                prepfile = mmn_remove_first_EEG_trial(details, options);
+            % in the modelbased analysis, we have to remove the first EEG trial because the model
+            % only defines PEs starting from the 2nd tone (1st observed transition)
+            prepfile = mmn_remove_first_EEG_trial(details, options);
     end
     
     switch options.erp.type
-       case {'lowhighEpsi2', 'lowhighEpsi3'}
-           D = spm_eeg_load(details.prepfile_modelbased);
-       otherwise
+        case {'lowhighEpsi2', 'lowhighEpsi3'}
+            D = spm_eeg_load(details.prepfile_modelbased);
+        otherwise
             D = spm_eeg_load(details.prepfile);
     end
-
+    
     %-- redefinition ------------------------------------------------------------------------------%
     % get new condition names
     load(details.eegtones);
@@ -69,14 +69,14 @@ catch
             load(details.design);
             condlist = mmn_lowhighPE_conditions(design.epsilon2, ...
                 '\epsilon_2', options);
-            savefig([details.lowhighPEfigs '_epsi2.fig']);  
+            savefig([details.lowhighPEfigs '_epsi2.fig']);
         case 'lowhighEpsi3'
             load(details.design);
             condlist = mmn_lowhighPE_conditions(design.epsilon3, ...
                 '\epsilon_3', options);
             savefig([details.lowhighPEfigs '_epsi3.fig']);
     end
-
+    
     switch options.preproc.eyeblinktreatment
         case 'reject'
             switch options.erp.type
@@ -91,12 +91,12 @@ catch
     D = tnueeg_redefine_conditions(D, condlist);
     D = copy(D, details.redeffile);
     disp(['Redefined conditions for subject ' id]);
-
+    
     %-- averaging ---------------------------------------------------------------------------------%
     D = tnueeg_average(D, options);
     D = copy(D, details.avgfile);
     disp(['Averaged over trials for subject ' id]);
-
+    
     % in case of robust filtering: re-apply the low-pass filter
     switch options.erp.averaging
         case 'r'
@@ -108,16 +108,23 @@ catch
             % do nothing
     end
     D = copy(D, details.erpfile);
-
+    
+    %-- headmodel specification ---------------------------------------------------------------------%
+    fiducials = D.fiducials.fid; % here, we use the template fiducials, but you can load subject-specific ones
+    hmJob     = mmn_headmodel_job(D,fiducials);
+    spm_jobman('run', hmJob);
+    D         = reload(D);
+    D         = copy(D, details.erpfile);
+    
     %-- ERP plot ----------------------------------------------------------------------------------%
     chanlabel = options.erp.electrode;
     switch options.erp.type
         case {'roving', 'mmnad'}
             triallist = {'standard', 'Standard Tones', [0 0 1]; ...
-                        'deviant', 'Deviant Tones', [1 0 0]};
+                'deviant', 'Deviant Tones', [1 0 0]};
         case {'lowhighEpsi2', 'lowhighEpsi3'}
             triallist = {'low', 'Lowest 15 %', [0 0 1]; ...
-                        'high', 'Highest 15 %', [1 0 0]};
+                'high', 'Highest 15 %', [1 0 0]};
         case 'tone'
             triallist = {'tone', 'All tone events', [0 0 1]};
     end
@@ -125,7 +132,7 @@ catch
         h = tnueeg_plot_subject_ERPs(D, chanlabel, triallist);
         h.Children(2).Title.String = ['Subject ' id ': ' options.erp.type ' ERPs'];
         savefig(h, details.erpfigure);
-        fprintf('\nSaved an ERP plot for subject %s\n\n', id);    
+        fprintf('\nSaved an ERP plot for subject %s\n\n', id);
     end
     
     %-- difference waves --------------------------------------------------------------------------%
@@ -135,20 +142,20 @@ catch
             % determine condition order within the D object
             idxDeviants = indtrial(D, 'deviant');
             idxStandards = indtrial(D, 'standard');
-
+            
             % set weights such that we substract standard trials from deviant
             % trials, give the new condition a name
             weights = zeros(1, ntrials(D));
             weights(idxDeviants) = 1;
             weights(idxStandards) = -1;
             condlabel = {'mmn'};
-
+            
             % sanity check for logfile
             disp('Difference wave will be computed using:');
             disp(weights);
             disp('as weights on these conditions:');
             disp(conditions(D));
-
+            
             % compute the actual contrast
             D = tnueeg_contrast_over_epochs(D, weights, condlabel, options);
             copy(D, details.difffile);
@@ -158,25 +165,25 @@ catch
             % determine condition order within the D object
             idxLow = indtrial(D, 'low');
             idxHigh = indtrial(D, 'high');
-
+            
             % set weights such that we substract standard trials from deviant
             % trials, give the new condition a name
             weights = zeros(1, ntrials(D));
             weights(idxHigh) = 1;
             weights(idxLow) = -1;
             condlabel = {'mmn'};
-
+            
             % sanity check for logfile
             disp('Difference wave will be computed using:');
             disp(weights);
             disp('as weights on these conditions:');
             disp(conditions(D));
-
+            
             % compute the actual contrast
             D = tnueeg_contrast_over_epochs(D, weights, condlabel, options);
             copy(D, details.difffile);
             disp(['Computed the difference wave for subject ' id]);
-    end    
+    end
 end
 
 cd(options.workdir);
