@@ -1,0 +1,292 @@
+begintemplate NeuronTemplate
+
+public init, delete_axon, delete_axon_BPO, insertChannel, distribute, geom_nseg
+public set_parameters, locateSites, getLongestBranch, distribute_channels, connect2target
+public initRand, indexSections, cell_name, rd1, pA
+public all, apical, basal, somatic, axonal,  nSecAll, nSecSoma, nSecApical, nSecBasal, cell_name
+public soma, dend, apic, axon, myelin, rList, cons, synlist, OUprocess, fih, rslist, roulist, siteVec
+
+objref synlist, cons, rList, rd1, sref, this, segCounts, sf, OUprocess, fih, rslist, roulist
+objref all, somatic, apical, axonal, basal
+strdef tstr, cell_name
+
+double siteVec[2]
+
+proc init() { localobj nl,imprt, bp
+	all     = new SectionList()
+	somatic = new SectionList()
+	basal   = new SectionList()
+	apical  = new SectionList()
+	axonal  = new SectionList()
+	forall delete_section()
+	
+	sf = new StringFunctions()
+	cell_name = $s1
+	sf.head(cell_name,".swc",cell_name)
+	sf.tail(cell_name,"morphologies/",cell_name)
+	
+	stimThreshold = 0
+	synlist = new List()
+	OUprocess = new List()
+	rslist = new List()
+	roulist = new List()
+	cons = new List()
+	
+	//load morphology
+	sf = new StringFunctions()
+	if (sf.substr($s1, ".asc") != -1){
+		nl = new Import3d_Neurolucida3()
+	} else{
+		nl = new Import3d_SWC_read()
+	}
+	nl.quiet = 1
+	nl.input($s1)
+	imprt = new Import3d_GUI(nl, 0)
+	imprt.instantiate(this)
+	
+	geom_nseg()
+	if ((strcmp(cell_name, "HL23PN1") == 0) || (strcmp(cell_name, "HL23MN1") == 0)) {
+		delete_axon(3,1.75,1,1)
+	} else {
+		delete_axon_BPO()
+	}
+	
+	initRand(1005)
+	forsec this.all {
+		if(diam == 0){
+			diam =  1
+			printf("Error : Morphology problem with section [%s] 0 diam \n", secname())
+		}
+		}
+	lengthA = 0
+	lengthB = 0
+	forsec "apic" {
+		lengthA = lengthA + L
+	}
+	forsec "dend" {
+		lengthB = lengthB + L
+	}
+	pA = lengthA/(lengthA + lengthB)
+}
+
+create soma[1], dend[1], apic[1], axon[1], myelin[1]
+
+proc geom_nseg() {local nSec, L1, L2, D1, D2, nSeg1, nSeg2
+	soma area(.5) // make sure diam reflects 3d points
+	nSec = 0
+	forsec all {
+		nseg = 1 + 2*int(L/40)
+		nSec = nSec + 1
+	}
+
+	nSecAll = nSec
+	nSec = 0
+	forsec somatic { nSec = nSec + 1}
+	nSecSoma	= 	nSec
+	nSec = 0
+	forsec apical { nSec = nSec + 1}
+	nSecApical= 	nSec
+	nSec = 0
+	forsec basal { nSec = nSec + 1}
+	nSecBasal	= 	nSec
+	nSec = 0
+	forsec axonal { nSec = nSec + 1}
+	nSecAxonalOrig = nSecAxonal	= 	nSec
+}
+
+proc delete_axon(){
+	forsec axonal{delete_section()}
+	create axon[2]
+	access axon[0]{
+		L= 20
+		nseg = 1+2*int(L/10)
+		diam(0:1) = $1:$2
+		all.append()
+		axonal.append()
+	}
+	access axon[1]{
+		L= 30
+		nseg = 1+2*int(L/10)
+		diam(0:1) = $2:$3
+		all.append()
+		axonal.append()
+	}
+
+	if($4){
+		create myelin[1]
+		access myelin{
+			L = 1000
+			diam = $4
+			nseg = 1+2*int(L/100)
+		}
+		connect myelin(0), axon[1](1)
+	}
+	
+	nSecAxonal = 2
+	connect axon(0), soma(0.5)
+	connect axon[1](0), axon[0](1)
+	access soma
+}
+
+proc delete_axon_BPO(){
+	nsec = 0
+	forsec axonal{
+		nsec = nsec + 1
+	}
+	if (nsec == 0){
+		ais_diams1 = 1
+		ais_diams2 = 1
+	} else if (nsec == 1){
+		ais_diams1 = axon[0].diam
+		ais_diams2 = axon[0].diam
+	} else {
+		ais_diams1 = axon[0].diam
+		ais_diams2 = axon[0].diam
+		soma distance(0,0.5)
+		forsec axonal{
+			if (distance(1,0.5) > 60){
+				ais_diams2 = diam
+				break
+			}
+		}
+	}
+	
+	forsec axonal{delete_section()}
+	create axon[2]
+	access axon[0]{
+		L= 30
+		nseg = 1//+2*int(L/10)
+		diam = ais_diams1
+		all.append()
+		axonal.append()
+	}
+	access axon[1]{
+		L= 30
+		nseg = 1//+2*int(L/10)
+		diam = ais_diams2
+		all.append()
+		axonal.append()
+	}
+
+	nSecAxonal = 2
+	connect axon[0](0), soma[0](1)
+	connect axon[1](0), axon[0](1)
+	access soma
+}
+
+func getLongestBranch(){local maxL,d localobj distallist,sref
+		sprint(tstr,"%s distance()",$s1)
+		execute(tstr,this)
+		
+		if(0==strcmp($s1,"axon")){
+		sprint(tstr,"%s[0] distance(1)",$s1)
+		execute(tstr,this)
+		}
+
+	maxL = 0
+	d = 0
+	distallist = new SectionList()
+	forsec $s1 {
+		sref = new SectionRef()
+		if (sref.nchild==0) distallist.append()
+	}
+	forsec distallist{
+		d = distance(1)
+		if(maxL<d) maxL = d
+	}
+	// for the soma case
+	if (maxL == 0) {
+		$s1 {
+			maxL = L
+		}
+		}
+	return maxL
+}
+
+obfunc locateSites() {local maxL,site,d0,d1,siteX,i localobj vv,ll
+	ll = new List()
+
+	sprint(tstr,"%s distance()",$s1)
+	execute(tstr,this)
+		
+	if(0==strcmp($s1,"axon")){
+		sprint(tstr,"%s[0] distance(1)",$s1)
+		execute(tstr,this)
+	}
+
+	maxL = getLongestBranch($s1)
+	site = $2
+	i = 0
+	forsec $s1 {
+		if (distance(0) < distance(1)) {
+			d0 = distance(0)
+			d1 = distance(1)
+		} else {
+			d1 = distance(0)
+			d0 = distance(1)
+		}
+
+		if (site <= d1 && site >= d0) {
+		siteX = (site-d0)/(d1-d0)
+		secNum = i
+		vv = new Vector()
+		ll.append(vv.append(secNum,siteX))
+		}
+		i = i+1
+	}
+	return ll
+}
+
+proc distribute_channels()	{local dist,val,base,maxLength
+	base = $8
+	soma distance()
+	maxLength = getLongestBranch($s1)
+
+	forsec $s1		{
+		if(0==strcmp($s2,"Ra")){
+			Ra = $8
+		} else {
+			for(x) {
+				if ($3==3) {
+					dist = distance(x)
+				} else {
+					dist = distance(x)/maxLength
+				}
+				val = calculate_distribution($3,dist,$4,$5,$6,$7,$8)
+				sprint(tstr,"%s(%-5.10f) = %-5.10f",$s2,x,val)
+				execute(tstr)
+			}
+		}
+	}
+}
+
+// $1 is the distribution type:
+//     0 linear, 1 sigmoid, 2 exponential
+//     3 step for absolute distance (in microns)
+func calculate_distribution()	{local value
+	if ($1==0)	{value = $3 + $2*$4}
+	if ($1==1) {value = $3 + ($4/(1+exp(($2-$5)/$6)))}
+	if ($1==2) {value = $3 + $6*exp($4*($2-$5))}
+	if ($1==3) {
+		if (($2 > $5) && ($2 < $6)) {
+			value = $3
+		} else {
+			value = $4
+		}
+	}
+	value = value*$7
+	return value
+}
+
+proc initRand() {
+	rList = new List() //for stochastic synapses
+	rd1 = new Random($1) // unique to this cell
+	rd1.uniform(0,1)
+}
+
+proc connect2target() { //$o1 target point process, $o2 returned NetCon
+	soma $o2 = new NetCon(&v(1), $o1)
+	$o2.threshold = -30
+}
+
+endtemplate NeuronTemplate

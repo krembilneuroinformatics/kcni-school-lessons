@@ -1,0 +1,71 @@
+proc biophys_HL23PN1(){
+	//$o1.delete_axon(1,1,1,1)
+	forsec $o1.all {
+			insert pas
+			Ra = 100
+			cm = 1
+			e_pas = -80
+			g_pas = 5e-5
+			insert Ih
+			gbar_Ih = 1e-4
+		}
+		forsec $o1.somatic {
+			insert SK
+			insert CaDynamics
+			insert Ca_LVA
+			insert Ca_HVA
+			insert K_T
+			insert K_P
+			insert Kv3_1
+			insert NaTg
+			ek = -85
+			ena = 50
+			gamma_CaDynamics_E2 = 0.0005
+			vshiftm_NaTg = 13
+			vshifth_NaTg = 15
+			slopem_NaTg = 7
+		}
+
+		forsec $o1.apical {
+			cm = 2
+		}
+		forsec $o1.basal {
+			cm = 2
+		}
+		$o1.distribute_channels("apic","gbar_Ih",2,-0.8696,3.6161,0.0,2.0870,$o1.soma.gbar_Ih)
+
+		forsec $o1.axonal {
+			insert SK
+			insert Ca_LVA
+			insert Ca_HVA
+			insert K_T
+			insert K_P
+			insert Nap
+			insert Kv3_1
+			insert NaTg
+			insert CaDynamics
+			ek = -85
+			ena = 50
+			vshifth_NaTg = 10
+			slopem_NaTg = 9
+			gamma_CaDynamics_E2 = 0.0005
+		}
+
+		$o1.distribute_channels("axon","decay_CaDynamics",0,1.000000,0.000000,0.000000,0.000000,79.1000000000)
+		$o1.distribute_channels("axon","gbar_SK",0,1.000000,0.000000,0.000000,0.000000,0.0346000000)
+		$o1.distribute_channels("axon","gbar_Ca_LVA",0,1.000000,0.000000,0.000000,0.000000,0.0002120000)
+		$o1.distribute_channels("axon","gbar_Ca_HVA",0,1.000000,0.000000,0.000000,0.000000,0.0000305000)
+		$o1.distribute_channels("axon","gbar_Kv3_1",0,1.000000,0.000000,0.000000,0.000000,0.8270000000)
+		$o1.distribute_channels("axon","gbar_K_T",0,1.000000,0.000000,0.000000,0.000000,0.0900000000)
+		$o1.distribute_channels("axon","gbar_K_P",0,1.000000,0.000000,0.000000,0.000000,0.2790000000)
+		$o1.distribute_channels("axon","gbar_Nap",0,1.000000,0.000000,0.000000,0.000000,0.0013800000)
+		$o1.distribute_channels("axon","gbar_NaTg",0,1.000000,0.000000,0.000000,0.000000,0.4860000000)
+		$o1.distribute_channels("soma","decay_CaDynamics",0,1.000000,0.000000,0.000000,0.000000,510.0000000000)
+		$o1.distribute_channels("soma","gbar_Ca_LVA",0,1.000000,0.000000,0.000000,0.000000,0.0000000000)
+		$o1.distribute_channels("soma","gbar_Ca_HVA",0,1.000000,0.000000,0.000000,0.000000,0.0005640000)
+		$o1.distribute_channels("soma","gbar_Kv3_1",0,1.000000,0.000000,0.000000,0.000000,0.0635000000)
+		$o1.distribute_channels("soma","gbar_SK",0,1.000000,0.000000,0.000000,0.000000,0.0000000000)
+		$o1.distribute_channels("soma","gbar_K_T",0,1.000000,0.000000,0.000000,0.000000,0.0508000000)
+		$o1.distribute_channels("soma","gbar_K_P",0,1.000000,0.000000,0.000000,0.000000,0.0001870000)
+		$o1.distribute_channels("soma","gbar_NaTg",0,1.000000,0.000000,0.000000,0.000000,0.2390000000)
+}
