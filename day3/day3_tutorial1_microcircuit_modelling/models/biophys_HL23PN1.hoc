@@ -1,3 +1,7 @@
+//=================================================================================================================
+// 2020 Hay lab, Krembil Centre for Neuroinformatics, Summer School. Code available for educational purposes only
+//=================================================================================================================
+
 proc biophys_HL23PN1(){
 	//$o1.delete_axon(1,1,1,1)
 	forsec $o1.all {
