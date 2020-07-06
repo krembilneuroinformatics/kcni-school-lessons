@@ -179,7 +179,6 @@ catch
     end    
 end
 
-close all
 cd(options.workdir);
 
 diary OFF

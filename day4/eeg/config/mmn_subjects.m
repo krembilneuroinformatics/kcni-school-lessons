@@ -74,6 +74,7 @@ details.eyeblinkthreshold...
 details.windowForEyeblinkdetection = 3;
 details.statroot    = fullfile(details.subjectroot, 'spm_stats', options.preproc.eyeblinktreatment);
 details.erproot     = fullfile(details.subjectroot, 'spm_erp', options.erp.type);
+details.dcmroot     = fullfile(details.subjectroot, 'spm_dcm', options.erp.type);
                     
 switch options.conversion.mode
      case 'modelbased'
@@ -112,6 +113,7 @@ details.avgfile     = fullfile(details.erproot, ['avg_' details.subjectname '.ma
 details.erpfile     = fullfile(details.erproot, [details.erpfilename '.mat']);
 details.difffile    = fullfile(details.erproot, ['diff_' details.erpfilename '.mat']);
 details.mergfile    = fullfile(details.erproot, [details.mergfilename]);
+details.dcmfile     = fullfile(details.dcmroot, ['dcm_' details.erpfilename '.mat']);
 
 % conditions
 switch options.conversion.mode
