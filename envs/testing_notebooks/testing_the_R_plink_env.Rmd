@@ -1,0 +1,51 @@
+---
+title: "Testing the R Docker Env"
+output:
+  html_document:
+    df_print: paged
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+## Printing the R settings
+
+First we will load, using the `library` command, all the packages that we will want to use during this project.
+
+```{r}
+library(tidyverse)
+library(rms)
+library(ggthemes)
+library(ggrepel)
+library(ggsci)
+```
+
+Then we will use `sessionInfo()` to print all the environment information.
+
+```{r}
+sessionInfo()
+```
+
+## Check plink install
+
+Lastly, we will check the install of `plink` by calling the help function.
+
+_Note that we are using the `sh` in to indicate to R markdown that this is bash code_
+
+
+```{sh}
+plink --help
+```
+
+```{sh}
+PRSice_linux -help
+```
+
+```{sh}
+PRSice.R -h
+```
+
+
