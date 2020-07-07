@@ -13,6 +13,12 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 # The weekly schedule:
 
+- [Day 1: Reproducible Science and Psychiatric Genetics (July 6, 2020)](#day1reproducible-science-and-psychiatric-genetics-july-6-2020)
+- [Day 2: Functional Genomics (July 7, 2020)](https://github.com/krembilneuroinformatics/kcni-school-lessons#day2functional-genomics-july-7-2020)
+- [Day 3: Cortical microcircuit and whole-brain Modelling (July 8, 2020)](https://github.com/krembilneuroinformatics/kcni-school-lessons#day3-cortical-microcircuit-and-whole-brain-modelling-july-8-2020)
+- [Day 4: Bayesian models of perception and learning](https://github.com/krembilneuroinformatics/kcni-school-lessons#day4bayesian-models-of-perception-and-learning-july-9-2020)
+- [Day 5: Psychiatric epidemiology and Population-based subtyping](#day5psychiatric-epidemiology-and-population-based-subtyping-july-10-2020)
+
 ## Day 1: Reproducible Science and Psychiatric Genetics (July 6, 2020)
 
 **Instructors:** Daniel Felsky, Sean Hill, Erin Dickie
