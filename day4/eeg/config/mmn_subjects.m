@@ -114,6 +114,13 @@ details.erpfile     = fullfile(details.erproot, [details.erpfilename '.mat']);
 details.difffile    = fullfile(details.erproot, ['diff_' details.erpfilename '.mat']);
 details.mergfile    = fullfile(details.erproot, [details.mergfilename]);
 details.dcmfile     = fullfile(details.dcmroot, ['dcm_' details.erpfilename '.mat']);
+details.dcmFigParam = fullfile(details.dcmroot, ['dcm_BParameters' details.erpfilename '.fig']);
+details.dcmFigParametersBar...
+                    = fullfile(details.dcmroot, ['dcm_BParametersBarGraph' details.erpfilename '.fig']);
+details.dcmPredictedSimulated...
+                    = fullfile(details.dcmroot, ['dcm_PredictedSimulated' details.erpfilename '.fig']);
+details.dcmScalpMaps...
+                    = fullfile(details.dcmroot, ['dcm_ScalpMaps' details.erpfilename '.fig']);
 
 % conditions
 switch options.conversion.mode
