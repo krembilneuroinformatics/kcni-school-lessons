@@ -3,7 +3,7 @@ A collection of code and lessons for the KCNI Summer School
 
 ## How to use git to clone this repo to your own computer
 
-** Note: When participating in the summer school, we recommend cloning the git repo from inside the computational env (i.e. the docker)** 
+**Note: When participating in the summer school, we recommend cloning the git repo from inside the computational env (i.e. the docker)** 
 
 Note that this repo uses submodules so to get everything use:
 
@@ -13,13 +13,15 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 # The weekly schedule:
 
-## Day 1: Reproducible Science and Psychiatric Genetics
+## Day 1: Reproducible Science and Psychiatric Genetics (July 6, 2020)
 
 **Instructors:** Daniel Felsky, Sean Hill, Erin Dickie
 
 **TA's:** Dr. Michael Wainberg & Sajel Patel
 
-**Computing Env** we will use our custom rstudio docker..[click here for install instructions](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/envs#kcni-school-envs). Also grab Erin's reproducibiltiy slides from [here]( https://docs.google.com/presentation/d/1weWaancrZH39zGSc_5Ew2k6chshadA3QP-H2wRTSJyM/edit?usp=sharing)
+**Computing Environment**:
++ we will use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [click here for install instructions](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/envs#kcni-school-envs). 
++ Also grab Erin's reproducibiltiy slides from [here]( https://docs.google.com/presentation/d/1weWaancrZH39zGSc_5Ew2k6chshadA3QP-H2wRTSJyM/edit?usp=sharing)
 
 | Time (EST) | Session | |
 |---- |----|---|
@@ -32,9 +34,9 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 2:45-4:15pm	 | Tutorial 2: Calculation of polygenic risk scores in PRSice | Watch on [Crowdcast](https://www.crowdcast.io/e/s4qmka1v/4) |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
-## Day 2: Functional Genomics
+## Day 2: Functional Genomics (July 7, 2020)
 
-**Instructors:** Dr. Shreejoy Tripathy & Leon French
+**Instructors:** Dr. Shreejoy Tripathy & Leon French 
 
 **TA's:** Sonny Chen & Sajel Patel
 
@@ -50,7 +52,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
-## Day 3: Cortical microcircuit and whole-brain Modelling
+## Day 3: Cortical microcircuit and whole-brain Modelling (July 8, 2020)
 
 **Instructors:** John Griffiths and Etay Hay
 
@@ -69,7 +71,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
-## Day 4: Bayesian models of perception and learning
+## Day 4: Bayesian models of perception and learning (July 9, 2020)
 
 **Instructors:** Dr. Andreea Diaconescu
 
@@ -87,7 +89,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
-## Day 5: Psychiatric epidemiology and Population-based subtyping
+## Day 5: Psychiatric epidemiology and Population-based subtyping (July 10, 2020)
 
 **Instructors:** Daniel Felsky
 
