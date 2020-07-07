@@ -19,8 +19,10 @@ EEG Analysis
 Assignments
 ------------
 1. Use the HGF tutorial code to generate a specific subtype of MDD reflecting `anhedonia` in terms of reduced reward expectations.
+
 	a. Which parameters did you change in order to achieve these belief trajectories?
 	b. Could you obtain similar belief trajectories using a different set of parameters?
 
-2. Use the EEG tutorial code to compare the top 30% of prediction error (PE) signals, generating pseudo-conditions and ERPs of the top 30% and bottom 30% of PE. 	
+2. Use the EEG tutorial code to compare the top 30% of `prediction error (PE) signals` generating pseudo-conditions and ERPs of the top 30% and bottom 30% of PE. 	
+
 	a. Can you model these effects with DCM, and if yes, do you obtain the same connectivity parameter estimates?
