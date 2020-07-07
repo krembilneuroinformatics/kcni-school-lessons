@@ -1,9 +1,11 @@
 function HGFtutorial_generate_task()
 %--------------------------------------------------------------------------
-% Maybe add a function description or tutorial overview here.
+% This tutorial describes how you generate inputs using the HGF as a
+% generative model of inputs/behaviour.
+% It also shows how to simulate responses using the HGF and simpler models
+% like the Rescorla-Wagner.  
 %
-%
-%
+%The final part of the tutorial allows the user to compare learning rates.
 %--------------------------------------------------------------------------
 
 
