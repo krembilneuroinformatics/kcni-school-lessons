@@ -8,7 +8,7 @@ if [ -d "$LESSONS_DIR" ]; then
   ### update lessons if they exist already ###
   echo "Updating the kcni-school-lessons repository"
   cd $SCRATCH/kcni-school-data/kcni-school-lessons
-  git config --git config --global user.name "KCNI student"
+  git config --global user.name "KCNI student"
   git config --global user.email student@example.com
   git config --global core.editor "nano" #with this - at least vim will not open
   git commit -am  "staging all local modifications"
