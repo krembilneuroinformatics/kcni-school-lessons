@@ -120,17 +120,29 @@ dcmInverted = spm_dcm_erp(dcmModel);
 % Explore Results
 %--------------------------------------------------------------------------
 figure;
-imagesc(exp(dcmInverted.Ep.B{1}));
+BmatrixParameters = exp(dcmInverted.Ep.B{1}); 
+nParameters       = 5;
+imagesc(BmatrixParameters);
 colormap(jet);
 colorbar;
 labelNames = options.dcm.sources.name;
 set(gca,'XTickLabel',labelNames);   % gca gets the current axis
 set(gca,'YTickLabel',labelNames);    % gca gets the current axis
+xticks([1:nParameters]);
+yticks([1:nParameters]);
+
+textStrings = num2str(BmatrixParameters(:), '%0.2f');       % Create strings from the matrix values
+textStrings = strtrim(cellstr(textStrings));  % Remove any space padding
+[x, y] = meshgrid(1:nParameters);  % Create x and y coordinates for the strings
+hStrings = text(x(:), y(:), textStrings(:), ...  % Plot the strings
+                'HorizontalAlignment', 'center');
+midValue = mean(get(gca, 'CLim'));  % Get the middle value of the color range
+textColors = repmat(BmatrixParameters > midValue, 1, 3);  % Choose white or black for the
+                                               %   text color of the strings so
+                                               %   they can be easily seen over
+                                               %   the background color
 savefig(details.dcmFigParam);
 
-
-spm_dcm_erp_results(dcmInverted,'trial-specific effects');
-savefig(details.dcmFigParametersBar);
 spm_dcm_erp_results(dcmInverted,'response');
 savefig(details.dcmPredictedSimulated);
 spm_dcm_erp_results(dcmInverted,'scalp maps');
