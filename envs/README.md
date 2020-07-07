@@ -118,7 +118,7 @@ If we now run `docker container ls` we should see that `priceless_turing` is no 
 
 Now we can move on and run a new container! Like the one for our python environment!
 
-### Running the Jyputer Physiological Modeling Environment
+### Running the Jupyter Physiological Modeling Environment
 
 We created a second environment that contains python and a jupyter notebook environment for Physiological Modeling.
 This one is build (or installed) with a very similar command.
