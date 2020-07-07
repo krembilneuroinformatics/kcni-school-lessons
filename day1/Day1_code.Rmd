@@ -17,7 +17,7 @@ Once the kcni-school-lessons git repo has been cloned, you will be able to load 
 
 The data for today is located on figshare. We going to download and unzip it into our day1 directory. In the bash terminal we can cd to this directory for the rest of the steps  
 
-```{sh, eval = FALSE}
+```{bash, eval = FALSE}
 ## first we need to get inside the day 1 folder
 ## you can replace "day1" with the full path to day1 if you don't think you are in the correct place
 cd kcni-school-lessons/day1
@@ -29,12 +29,12 @@ wget -O day1_workdir.zip https://ndownloader.figshare.com/files/23661443?private
 Now we should see a zip file appear in our day1 directory - but we still need to unzip the file. Let's do that now.
 
 
-```{bash}
+```{bash,eval=FALSE}
 pwd
 ls
 ```
 
-```{bash}
+```{bash,eval=FALSE}
 unzip day1_workdir.zip # this will create a workdir
 
 # this will unzip the geno data inside the workdir
@@ -77,15 +77,15 @@ bash
 
 try running `plink --help` to make sure that plink can be found. If not try the `source_this_if_plink_not_found.sh` script.
 
-```{bash}
+```{bash,eval=FALSE}
 plink --help
 ```
 
-```{bash}
+```{bash,eval=FALSE}
 source source_this_if_plink_not_found.sh
 ```
 
-```{bash}
+```{bash,eval=FALSE}
 plink --help
 ```
 
@@ -104,13 +104,13 @@ The PLINK binary file formats are arranged as follows:
 
 
 Let's take a look at the BIM and FAM files:
-```{bash}
+```{bash,eval=FALSE}
 head geno/geno_r08_n1000.bim
 ```
 
 Note the columns are not named (no header). They correspond to: chromosome, SNP ID (in this case rs#), chromosomal location in centimorgans (largely defunct), physical chromosomal location in base pairs (1-based), minor allele, major allele  
 
-```{bash}
+```{bash,eval=FALSE}
 head geno/geno_r08_n1000.fam
 ```
 
@@ -147,7 +147,7 @@ The QC steps can be conveniently accomplished using PLINK. The required QC steps
 ``` --geno ```   = remove SNPs with genotype missingness of greater than %1  
 ``` --mind ```   = remove subjects with genotype missingness of greater than %1  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_r08_n1000 \
     --maf 0.05 \
@@ -166,7 +166,7 @@ The geno_qc.snplist file contains SNPs that pass our QC.
 
 ##### **Heterozygosity**  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_r08_n1000 \
     --extract geno/geno_qc.snplist \
@@ -203,7 +203,7 @@ fwrite(valid[,c("FID","IID")],
 
 Before calculating relatedness, it will ease calculations if we first remove SNPs that are in high LD (i.e. strongly correlated). This is because the relatedness calculation works by performing pair-wise calculations among all SNPs in the genome between all subjects, which can take several minutes for millions of variants (in our case 5,629,920). It is not necessary for the PRSice calculations, since PRSice performs its own clumping procedure during its PRS calcuation (and depending on our sample size, we may opt to use a larger secondary reference to determine LD structure, rather than pruning our own dataset a priori).  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_r08_n1000 \
     --extract geno/geno_qc.snplist \
@@ -218,7 +218,7 @@ Our result will be somewhat dissapointing, since there are no cryptically relate
 
 The identification of samples with outlying ancestry is important for the calculation of PRS. For the purposes of this workshop, a full ancestry analysis is not feasible. However, we will perform a PCA of our dataset and observe any substantial deviations for demonstration purposes. First we need to prune the dataset for LD in PLINK.  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_r08_n1000 \
     --extract geno/geno_qc.snplist \
@@ -227,7 +227,7 @@ plink \
     --out geno/geno_qc 
 ```  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_r08_n1000 \
     --extract geno/geno_qc.prune.in \
@@ -236,7 +236,7 @@ plink \
     --out geno/geno_forPCA
 ```  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_forPCA \
     --pca \
@@ -264,7 +264,7 @@ In order to determine ancestry, the genotype data must first be merged with a re
 
 We have two options here: A) we could use the LD-pruned data by setting ```--extract geno_qc.prune.in``` or, as would use the non LD-pruned data by setting ```--extract geno_qc.snplist```. We will perform the latter, to provide PRSIce with more SNPs for matching with our GWAS summary statistics before it performs its own LD pruning (clumping).  
 
-```{bash}
+```{bash,eval=FALSE}
 plink \
     --bfile geno/geno_r08_n1000 \
     --keep geno/geno_qc.valid.sample \
@@ -285,7 +285,7 @@ These files have been downloaded from the hosted repository linked in the manusc
 
 Before we begin, we have to check which summary statistics are in the provided file.  
 
-```{bash}
+```{bash,eval=FALSE}
 head sumstats/PGC_UKB_depression_genome-wide.txt
 ```
 
@@ -293,7 +293,7 @@ We see columns for SNP ID (MarkerName), effect and "other" alleles (A1, A2), obs
 
 These are fairly standard statistics for a case-control study (binary outcome), though sometimes we will fine beta coefficients, t-statistics, or untransformed ORs. In this case, the OR has been log-transformed. We need raw OR for PRSice. This is most efficiently done in bash using a combination of ```awk```, ```sed```, and ```paste```.  
 
-```{bash}
+```{bash,eval=FALSE}
 awk 'NR>1{print exp($5)}' sumstats/PGC_UKB_depression_genome-wide.txt | sed '1i OR' > sumstats/or.txt
 paste -d" " sumstats/PGC_UKB_depression_genome-wide.txt sumstats/or.txt > sumstats/MDD_sumstats.txt
 ```  
@@ -327,7 +327,7 @@ Three important steps will be performed automatically by PRSice.
 
 ### 4. Perform high-resolution scoring against a phenotype
 
-```{bash}
+```{bash,eval=FALSE}
 pwd
 ```
 
@@ -347,7 +347,7 @@ PRSice_linux \
     --binary-target F \
     --cov pheno/phenotype_file_withPCs.txt \
     --cov-col msex,age,education,@PC[1-5] \
-    --target geno/geno_clean \
+    --target geno/geno_forPCA \
     --lower 5e-08 \
     --upper 0.5 \
     --interval 0.00001 \
@@ -389,7 +389,7 @@ PRSice_linux \
     --pvalue P \
     --snp MarkerName \
     --stat OR \
-    --target geno/geno_clean
+    --target geno/geno_forPCA
 ```  
 
 ***
@@ -397,7 +397,7 @@ PRSice_linux \
 
 After the scores have been calculated, there are a few important things to check in the PRSice log file before continuing.
 
-```{bash}
+```{bash,eval=FALSE}
 cat prs/MDD_noregress.log
 ```  
 
