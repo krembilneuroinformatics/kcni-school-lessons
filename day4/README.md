@@ -1,5 +1,6 @@
 MATLAB code accompanying Day 4 of the KCNI school
 ===============
+This code runs on MATLAB R2020a, the license provided with this course. Please contact the teacher or the TAs if you do not have access to this license.
 
 Getting Started
 ---------------
