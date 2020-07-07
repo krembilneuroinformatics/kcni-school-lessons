@@ -46,6 +46,8 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **TA's:** Sonny Chen & Sajel Patel
 
+**Computing Environment**: we will continue to use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [click here for install instructions]
+
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Gene expression in bulk and single-cells | Watch on [Crowdcast](https://www.crowdcast.io/e/s4qmka1v/5) |
@@ -63,6 +65,8 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 **Instructors:** John Griffiths and Etay Hay
 
 **TA's** Shreyas Harita & Frank Mazza
+
+**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment)
 
 
 | Time (EST) | Session | |
@@ -83,6 +87,10 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **TA's:** Daniel Hauke & Povilas Karvelis
 
+**Compute Environment**: MATLAB. 
+- All students in the interactive stream should have been emailed a link to a temporary MATLAB license that can be used for this course. Contact KCNI.School@camh.ca with any questions.
+- Additional setup instructions are available in the [day4 folder](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/day4#matlab-code-accompanying-day-4-of-the-kcni-school)
+
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Computational Models of Perception and Behaviour | Watch on [Crowdcast](https://www.crowdcast.io/e/s4qmka1v/13) |
@@ -101,6 +109,8 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **TA's**: Hajer Nakua & Micaela Consens
 
+**Computing Environment**: we will continue to use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [click here for install instructions]
+
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Datasets for Integrative Analysis | Watch on [Crowdcast](https://www.crowdcast.io/e/s4qmka1v/17) |
@@ -113,4 +123,3 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
-Lesson slides should use this template https://drive.google.com/file/d/1UPFvHU4xAJ2MNvL957VUX-4SUOUNolS7/view?usp=sharing
