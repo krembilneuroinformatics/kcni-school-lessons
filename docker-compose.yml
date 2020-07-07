@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  rstudio:
+    image: edickie/kcnischool-rstudio
+    ports:
+      - 8787:8787
+    volumes:
+      - ./:/home/rstudio/kcni-school-data
+    environment:
+      - DISABLE_AUTH=true
+  
+  jupyter:
+    image: edickie/kcnischool-jupyter
+    ports:
+      - 8888:8888
+    volumes:
+      - ./:/home/neuro/kcni-school-data
