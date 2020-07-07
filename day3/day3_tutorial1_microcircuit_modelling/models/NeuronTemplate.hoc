@@ -1,3 +1,7 @@
+//=================================================================================================================
+// 2020 Hay lab, Krembil Centre for Neuroinformatics, Summer School. Code available for educational purposes only
+//=================================================================================================================
+
 begintemplate NeuronTemplate
 
 public init, delete_axon, delete_axon_BPO, insertChannel, distribute, geom_nseg
@@ -19,19 +23,19 @@ proc init() { localobj nl,imprt, bp
 	apical  = new SectionList()
 	axonal  = new SectionList()
 	forall delete_section()
-	
+
 	sf = new StringFunctions()
 	cell_name = $s1
 	sf.head(cell_name,".swc",cell_name)
 	sf.tail(cell_name,"morphologies/",cell_name)
-	
+
 	stimThreshold = 0
 	synlist = new List()
 	OUprocess = new List()
 	rslist = new List()
 	roulist = new List()
 	cons = new List()
-	
+
 	//load morphology
 	sf = new StringFunctions()
 	if (sf.substr($s1, ".asc") != -1){
@@ -43,14 +47,14 @@ proc init() { localobj nl,imprt, bp
 	nl.input($s1)
 	imprt = new Import3d_GUI(nl, 0)
 	imprt.instantiate(this)
-	
+
 	geom_nseg()
 	if ((strcmp(cell_name, "HL23PN1") == 0) || (strcmp(cell_name, "HL23MN1") == 0)) {
 		delete_axon(3,1.75,1,1)
 	} else {
 		delete_axon_BPO()
 	}
-	
+
 	initRand(1005)
 	forsec this.all {
 		if(diam == 0){
@@ -121,7 +125,7 @@ proc delete_axon(){
 		}
 		connect myelin(0), axon[1](1)
 	}
-	
+
 	nSecAxonal = 2
 	connect axon(0), soma(0.5)
 	connect axon[1](0), axon[0](1)
@@ -150,7 +154,7 @@ proc delete_axon_BPO(){
 			}
 		}
 	}
-	
+
 	forsec axonal{delete_section()}
 	create axon[2]
 	access axon[0]{
@@ -177,7 +181,7 @@ proc delete_axon_BPO(){
 func getLongestBranch(){local maxL,d localobj distallist,sref
 		sprint(tstr,"%s distance()",$s1)
 		execute(tstr,this)
-		
+
 		if(0==strcmp($s1,"axon")){
 		sprint(tstr,"%s[0] distance(1)",$s1)
 		execute(tstr,this)
@@ -208,7 +212,7 @@ obfunc locateSites() {local maxL,site,d0,d1,siteX,i localobj vv,ll
 
 	sprint(tstr,"%s distance()",$s1)
 	execute(tstr,this)
-		
+
 	if(0==strcmp($s1,"axon")){
 		sprint(tstr,"%s[0] distance(1)",$s1)
 		execute(tstr,this)

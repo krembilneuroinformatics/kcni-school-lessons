@@ -1,3 +1,6 @@
+#===============================================================================================================
+# 2020 Hay lab, Krembil Centre for Neuroinformatics, Summer School. Code available for educational purposes only
+#===============================================================================================================
 import scipy
 from scipy import stats as st
 import numpy

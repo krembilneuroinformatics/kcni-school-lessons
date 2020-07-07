@@ -1,3 +1,7 @@
+//=================================================================================================================
+// 2020 Hay lab, Krembil Centre for Neuroinformatics, Summer School. Code available for educational purposes only
+//=================================================================================================================
+
 //========================================================================================
 //============================== position related functions ==============================
 //========================================================================================
@@ -72,17 +76,17 @@ proc addTonicInhibition(){
 proc createArtificialSyn() {local sitenum,OUni,i localobj sl, postcell, sref
 	strdef treename
 	postcell = $o2
-	
+
 	treename = "dend"
 	relpos = 0.5
 	sl = postcell.locateSites(treename,relpos*postcell.getLongestBranch(treename))
 	for (i=0;i<sl.count();i+=1){
 		postcell.siteVec[0] = sl.o[i].x[0]
 		postcell.siteVec[1] = sl.o[i].x[1]
-		
+
 		access postcell.dend[postcell.siteVec[0]]
 		postcell.dend[postcell.siteVec[0]] sref = new SectionRef()
-		
+
 		sref {
 			postcell.OUprocess.append(new Gfluct2(postcell.siteVec[1]))
 			OUni = postcell.OUprocess.count()-1 // OU object index
@@ -101,14 +105,14 @@ proc createArtificialSyn() {local sitenum,OUni,i localobj sl, postcell, sref
 			postcell.OUprocess.o[OUni].noiseFromRandom(postcell.roulist.o[OUni])
 		}
 	}
-	
+
 	// Apply 5 OUs along apical trunk (if PN)
 	if ((strcmp(postcell.cell_name, "HL23PN1") == 0) || (strcmp(postcell.cell_name, "HL4PN1") == 0) || (strcmp(postcell.cell_name, "HL5PN1") == 0) || (strcmp(postcell.cell_name, "HL5PN1y") == 0) || (strcmp(postcell.cell_name, "HL5PN1o") == 0)){
 		for (i=0; i<5; i+=1){
 			treename = "apic"
 			relpos = i*0.2 + 0.1 // [0.1, 0.3, 0.5, 0.7, 0.9]
 			sl = postcell.locateSites(treename,relpos*postcell.getLongestBranch(treename))
-			
+
 			maxdiam = 0
 			for (i1=0; i1<sl.count(); i1+=1){
 				dd1 = sl.o[i1].x[1]
@@ -118,13 +122,13 @@ proc createArtificialSyn() {local sitenum,OUni,i localobj sl, postcell, sref
 					maxdiam = dd
 				}
 			}
-			
+
 			postcell.siteVec[0] = sl.o[j].x[0]
 			postcell.siteVec[1] = sl.o[j].x[1]
-			
+
 			access postcell.apic[postcell.siteVec[0]]
 			postcell.apic[postcell.siteVec[0]] sref = new SectionRef()
-			
+
 			sref {
 				postcell.OUprocess.append(new Gfluct2(postcell.siteVec[1]))
 				OUni = postcell.OUprocess.count()-1 // OU object index
@@ -155,7 +159,7 @@ proc deleteSyn() { // input the presyn
 
 obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sref, precell
 	strdef treename,SynType,Target
-	
+
 	NumSyns = $1
 	SynType = $s2
 	Target = $s3
@@ -168,7 +172,7 @@ obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sre
 	postcell = $o10
 	precell = $o11
 	postcell.synlist.remove_all()
-	
+
 	if (strcmp("both",Target)==0){
 		if (postcell.rd1.repick()<postcell.pA){
 			treename = "apic"
@@ -178,15 +182,15 @@ obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sre
 	} else {
 		treename = Target
 	}
-	
+
 	for(jj=0;jj<NumSyns;jj+=1){
-		
+
 		sl = postcell.locateSites(treename,postcell.rd1.repick()*postcell.getLongestBranch(treename))
 		sitenum = int((sl.count()-1)*postcell.rd1.repick())
-		
+
 		postcell.siteVec[0] = sl.o[sitenum].x[0]
 		postcell.siteVec[1] = sl.o[sitenum].x[1]
-		
+
 		if (strcmp(treename, "dend") == 0){
 			access postcell.dend[postcell.siteVec[0]]
 			postcell.dend[postcell.siteVec[0]] sref = new SectionRef()
@@ -195,7 +199,7 @@ obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sre
 			access postcell.apic[postcell.siteVec[0]]
 			postcell.apic[postcell.siteVec[0]] sref = new SectionRef()
 		}
-		
+
 		if (strcmp("E",SynType)==0){
 			sref {
 				postcell.synlist.append(new ProbAMPANMDA(postcell.siteVec[1]))
@@ -213,7 +217,7 @@ obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sre
 				postcell.synlist.o[syni].Use = use
 				postcell.synlist.o[syni].u0 = 0
 				postcell.synlist.o[syni].gmax = synConductance
-				
+
 				access precell.soma
 				precell.cons.append(new NetCon(&v(1), postcell.synlist.o[syni]))
 				preconi = precell.cons.count()-1 //connection index
@@ -237,7 +241,7 @@ obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sre
 				postcell.synlist.o[syni].Use = use
 				postcell.synlist.o[syni].u0 = 0
 				postcell.synlist.o[syni].gmax = synConductance
-				
+
 				access precell.soma
 				precell.cons.append(new NetCon(&v(1), postcell.synlist.o[syni]))
 				preconi = precell.cons.count()-1 //connection index
@@ -252,7 +256,7 @@ obfunc distributeSyn() {local sitenum,syni,preconi,jj localobj sl, postcell, sre
 
 proc InitConnections(){local sitenum,syni,jj localobj sl, postcell, sref
 	strdef treename,SynType,Target
-	
+
 	NumSyns = $1
 	SynType = $s2
 	Target = $s3
@@ -263,7 +267,7 @@ proc InitConnections(){local sitenum,syni,jj localobj sl, postcell, sref
 	fac = $8
 	use = $9
 	postcell = $o10
-	
+
 	if (strcmp("both",Target)==0){
 		if (postcell.rd1.repick()<postcell.pA){
 			treename = "apic"
@@ -273,15 +277,15 @@ proc InitConnections(){local sitenum,syni,jj localobj sl, postcell, sref
 	} else {
 		treename = Target
 	}
-	
+
 	for(jj=0;jj<NumSyns;jj+=1){
-		
+
 		sl = postcell.locateSites(treename,postcell.rd1.repick()*postcell.getLongestBranch(treename))
 		sitenum = int((sl.count()-1)*postcell.rd1.repick())
-		
+
 		postcell.siteVec[0] = sl.o[sitenum].x[0]
 		postcell.siteVec[1] = sl.o[sitenum].x[1]
-		
+
 		if (strcmp(treename, "dend") == 0){
 			access postcell.dend[postcell.siteVec[0]]
 			postcell.dend[postcell.siteVec[0]] sref = new SectionRef()
@@ -290,7 +294,7 @@ proc InitConnections(){local sitenum,syni,jj localobj sl, postcell, sref
 			access postcell.apic[postcell.siteVec[0]]
 			postcell.apic[postcell.siteVec[0]] sref = new SectionRef()
 		}
-		
+
 		if (strcmp("E",SynType)==0){
 			sref {
 				postcell.synlist.append(new ProbAMPANMDA(postcell.siteVec[1]))
