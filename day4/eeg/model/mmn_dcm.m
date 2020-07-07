@@ -127,7 +127,7 @@ labelNames = options.dcm.sources.name;
 set(gca,'XTickLabel',labelNames);   % gca gets the current axis
 set(gca,'YTickLabel',labelNames);    % gca gets the current axis
 savefig(details.dcmFigParam);
-fprintf('\nSaved the DCM B parameter figure for subject %s\n\n', id);
+
 
 spm_dcm_erp_results(dcmInverted,'trial-specific effects');
 savefig(details.dcmFigParametersBar);
@@ -135,6 +135,8 @@ spm_dcm_erp_results(dcmInverted,'response');
 savefig(details.dcmPredictedSimulated);
 spm_dcm_erp_results(dcmInverted,'scalp maps');
 savefig(details.dcmScalpMaps);
+
+fprintf('\nSaved the DCM figures for subject %s\n\n', id);
 
 
 
