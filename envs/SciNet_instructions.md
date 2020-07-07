@@ -4,7 +4,7 @@ For those who can't get Docker installed on their personal machines. We have the
 
 To use this, please ask your TA, or email KCNI.school@camh.ca for at temporary username and password for the SciNet system.
 
-Getting to these services looks complicated but all you should need one your local computer is a linux terminal or a linux terminal simulator. (I, for windows, use gitbash https://gitforwindows.org/, you could also use putty or mobaxterm.
+Getting to these services looks complicated but all you should need one your local computer is a linux terminal or a linux terminal simulator. (I, for windows, use gitbash https://gitforwindows.org/, you could also use putty. *Some of our testers have found that this will not work with Mobaexterm*
 
 # Part 1: For the rstudio-plink environment (Days 1, 2 and 5)
 

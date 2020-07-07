@@ -1,9 +1,12 @@
 function HGFtutorial_generate_learners
 %--------------------------------------------------------------------------
-% Maybe add a function description or tutorial overview here.
+% This part of the turial allows you to generate belief trajectories and 
+% simulate responses of different types of learners: optional (given the 
+% inputs observed and aberrant in terms of learning about volatility. 
 %
-%
-%
+% This is a hypothesis generation software that allows the user to generate
+% beliefs and response trajectories of major depression disorder (MDD) and
+% controls in silico.
 %--------------------------------------------------------------------------
 
 
