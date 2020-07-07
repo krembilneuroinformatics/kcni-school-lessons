@@ -15,4 +15,4 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./:/home/neuro/kcni-school-data
+      - ./:/kcni-school-data
