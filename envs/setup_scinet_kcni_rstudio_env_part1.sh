@@ -1,6 +1,5 @@
 #!/bin/bash
 
-+x
 
 ## either clone or pull the kcni-school-lessons 
 
@@ -9,6 +8,9 @@ if [ -d "$LESSONS_DIR" ]; then
   ### update lessons if they exist already ###
   echo "Updating the kcni-school-lessons repository"
   cd $SCRATCH/kcni-school-data/kcni-school-lessons
+  git config --git config --global user.name "KCNI student"
+  git config --global user.email student@example.com
+  git config --global core.editor "nano" #with this - at least vim will not open
   git commit -am  "staging all local modifications"
   git pull --recurse-submodules
 else
@@ -20,5 +22,5 @@ else
 fi
 
 echo "Moving larger data into the repository"
-cp -f /scinet/course/ss2020/5_neuroimaging/kcni_data/day1_workdir.zip $SCRATCH/kcni-school-data/kcni-school-lessons/day1/
+scp /scinet/course/ss2020/5_neuroimaging/kcni_data/day1_workdir.zip $SCRATCH/kcni-school-data/kcni-school-lessons/day1/
 scp -r /scinet/course/ss2020/5_neuroimaging/kcni_data/allen_brain $SCRATCH/kcni-school-data/kcni-school-lessons/day2/kcni_summer/
