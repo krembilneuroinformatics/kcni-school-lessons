@@ -192,19 +192,23 @@ ssh -L8787:localhost:9798 scinetguest230@teach.scinet.utoronto.ca
 ssh -L9798:localhost:9798 teach36
 ```
 
-## Step 1.6 open the browser on you local machine.
+## Step 3.6 open the browser on you local machine.
 
 Open your browser (i.e. google-chrome, safari or firefox) and point your browser at [localhost:8787](localhost:8787) and you should see a jupyter prompt! It will ask you for a password. This is the password that you typed twice into the terminal during step 1.5.
 
 
 ## appendix: how this was built by the instructors
 
-We converted the docker containers to singularity containers so that they could be run on the SciNet HCP.
+Under the hood. We are running singularity containers (not Docker containers) on SciNet. To get singularity images from our Docker images, we actually used two methods. (Both work)
+
+The rstudio image was converted from Docker on Erin's local laptop using docker2singularity.
 
 ```sh
 docker run -v /var/run/docker.sock:/var/run/docker.sock -v C:\Users\erin_dickie\data:/output --privileged -t --rm quay.io/singularity/docker2singularity edickie/kcnischool-rstudio:latest
 ```
 
+The jupyter singularity image was built directly on SciNet using the following command
+
 ```sh
-docker run -v /var/run/docker.sock:/var/run/docker.sock -v C:\Users\erin_dickie\data:/output --privileged -t --rm quay.io/singularity/docker2singularity edickie/kcnischool-jupyter:latest
+singularity build edickie_kcnischool-jupyter_latest-2020-07-07.sif docker://edickie/kcnischool-jupyter:latest
 ```
