@@ -6,7 +6,7 @@ Getting Started
 ---------------
 1.  Please clone this repo (type on Linux, Mac):
 ```
-git clone --recursive git@github.com:krembilneuroinformatics/kcni-school-lessons.git MyFolderKCNISchool
+git clone --recursive https://github.com/krembilneuroinformatics/kcni-school-lessons.git MyFolderKCNISchool
 ```
 2. Set your environment using `'kcni_setup_paths'`
 
