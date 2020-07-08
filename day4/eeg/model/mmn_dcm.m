@@ -141,6 +141,8 @@ textColors = repmat(BmatrixParameters > midValue, 1, 3);  % Choose white or blac
                                                %   text color of the strings so
                                                %   they can be easily seen over
                                                %   the background color
+set(hStrings,'Fontsize',40);
+set(hStrings, {'Color'}, num2cell(textColors, 2));  % Change the text colors
 savefig(details.dcmFigParam);
 
 spm_dcm_erp_results(dcmInverted,'response');

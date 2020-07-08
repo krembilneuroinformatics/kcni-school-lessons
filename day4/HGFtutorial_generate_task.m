@@ -10,7 +10,7 @@ function HGFtutorial_generate_task()
 
 
 %% Defaults
-set(0,'defaultAxesFontSize',16);
+set(0,'defaultAxesFontSize',20);
 
 
 %% Generate Input
