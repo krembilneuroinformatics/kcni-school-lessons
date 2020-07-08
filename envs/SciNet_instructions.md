@@ -110,27 +110,91 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 # Part 3: Getting the jupyter envs (for day 3)
 
-```sh
-singularity run \
-  --home $SCRATCH/kcni_school_data:/home/neuro/ \
-  /scinet/course/ss2020/5_neuroimaging/containers/edickie_kcnischool-jupyter_latest-2020-06-30-80999c06ecbb.sif
-```
+## Step 3.1 Connect to SciNet teach node
+
+*Just as in step 1.1 for rstudio*
 
 ```sh
-ssh -L8888:localhost:8888 <username>@teach.scinet.utoronto.ca
+ssh <username>@teach.scinet.utoronto.ca
 ```
 
-Then we can copy and paste the address that appears after own singularity run in our browser
+## Step 3.2 Update the code and data
 
-For example I saw this message with the address to copy and paste..
+We can use the same script as we use previously to update the code and data. (Some last minute changes were added during the course)
+
+```sh
+source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_rstudio_env_part1.sh
 ```
-Or copy and paste one of these URLs:
-        http://teach01.scinet.local:8888/?token=0c4f675b02b88455630c12bd2cf9e41a64c4afa2e0861b6a
-     or http://127.0.0.1:8888/?token=0c4f675b02b88455630c12bd2cf9e41a64c4afa2e0861b6a
+
+It's possible that you have trouble pulling the data because of "merge conflicts". The easiest thing to do is actually to rename the repo you were working with yesterday and run the script again..
+
+```sh
+mv $SCRATCH/kcni-school-data $SCRATCH/kcni-school-data1
+source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_rstudio_env_part1.sh
 ```
 
 
-The without running a debugjob way...Ramses would not be impressed
+## Step 3.3 start a debugjob
+
+*This step is also identical to what was done for rstudio (Step 1.3).*
+A debugjob will ensure that we are not sitting on one of the most busy computers. It will timeout after 4 hours - but that is enough time for our tutorials!
+
+```sh
+debugjob -n 10 # debugjob is a custom script on SciNet that give you a debugjob
+```
+
+Take note of what "node" you are assigned. You will need this for later
+
+## Step 3.4 start jupyter in singularity on SciNet
+
+This part is kinda involved - but just copy and paste..
+Note that you need to substitute `<your-port>` in the appropriate place
+
+To do this - we have created a custom script to source.. it has one argument (`<your-port>`).
+When this script runs, you will be prompted to input a password of your choice into the terminal. This will be your jupyter password.
+
+```sh
+source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_jupyter_env_part2.sh
+ <your-port>
+```
+
+For example: if your picked port 9798
+
+```sh
+source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_jupyter_env_part2.sh
+ 9798
+```
+When this script runs, you will be prompted to input a password of your choice into the terminal. This will be your jupyter password.
+**DON'T CLOSE THIS TERMINAL!** open a new terminal for the next step
+
+## Step 3.5 Set up a "tunnel" to connect your computer to the jupyter
+
+*This is also exactly the same and we did for rstudio in step 1.5*
+
+Note: to do this step you need to pay attention to which "node" of Scinet you were assigned to when you typed `debugjob`.
+This should again be echoed by the 3.3 script.
+
+**OPEN ANOTHER TERMINAL, don't close the one from step 3.3** and type:
+
+```sh
+ssh -L8787:localhost:<my_port> <my_username>@teach.scinet.utoronto.ca
+ssh -L<my_port>:localhost:<my_port> <my_debubjob_node>
+```
+
+For example:
+In the situation where
++ <my_port> is 9798
++ <my_debugjob_node> is teach36
++ <my username> is scinetguest230@teach.scinet.utoronto.ca
+
+```sh
+ssh -L8787:localhost:9798 scinetguest230@teach.scinet.utoronto.ca
+ssh -L9798:localhost:9798 teach36
+```
+
+## Step 1.6 open the browser on you local machine.
+
+Open your browser (i.e. google-chrome, safari or firefox) and point your browser at [localhost:8787](localhost:8787) and you should see a jupyter prompt! It will ask you for a password. This is the password that you typed twice into the terminal during step 1.5.
 
 
 ## appendix: how this was built by the instructors
