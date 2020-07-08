@@ -25,6 +25,8 @@ pathProject = fileparts(mfilename('fullpath'));
 % remove all other toolboxes
 restoredefaultpath;
 
+warning off; % to remove obvious path warnings for now
+
 % add project path with all sub-paths
 addpath(genpath(pathProject));
 
@@ -39,3 +41,5 @@ pathSpm = fileparts(which('spm'));
 rmpath(genpath(pathSpm));
 addpath(pathSpm);
 dmpad_setup_spm();
+
+warning on
