@@ -154,15 +154,13 @@ To do this - we have created a custom script to source.. it has one argument (`<
 When this script runs, you will be prompted to input a password of your choice into the terminal. This will be your jupyter password.
 
 ```sh
-source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_jupyter_env_part2.sh
- <your-port>
+source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_jupyter_env_part2.sh <your-port>
 ```
 
 For example: if your picked port 9798
 
 ```sh
-source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_jupyter_env_part2.sh
- 9798
+source /scinet/course/ss2020/5_neuroimaging/setup_scinet_kcni_jupyter_env_part2.sh 9798
 ```
 When this script runs, you will be prompted to input a password of your choice into the terminal. This will be your jupyter password.
 **DON'T CLOSE THIS TERMINAL!** open a new terminal for the next step
