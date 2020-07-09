@@ -3,6 +3,7 @@ title: "Day 5 KCNI summer school"
 output:
   html_document:
     df_print: paged
+    toc: true
   pdf_document: default
 ---
 
@@ -13,6 +14,7 @@ Load required R packages:
 library(SNFtool)
 library(mice)
 library(rms)
+library(here)
 ```
 
 ---
@@ -34,7 +36,8 @@ Once the kcni-school-lessons git repo has been cloned, you will be able to load 
 ## Step 1 read in datasets to be passed into SNF  
 Read in Phenotype data with our primary outcomes of interest
 ```{r}
-pheno_long <- readRDS("/home/rstudio/kcni-school-data/kcni-school-lessons/day5/pheno/longdat.rds")
+
+pheno_long <- readRDS(here("day5","pheno","longdat.rds"))
 head(pheno_long)
 
 pheno_wide <- reshape(pheno_long, 
@@ -51,13 +54,13 @@ head(pheno_wide)
 3. epigenomic environmental exposure (methylation cpgs)  
 
 ```{r}
-expr <- readRDS("/home/rstudio/kcni-school-data/kcni-school-lessons/day5/snfdata/expr.rds")
+expr <- readRDS(here("day5", "snfdata", "expr.rds"))
 expr[1:5,1:5]
 
-eeg <- readRDS("/home/rstudio/kcni-school-data/kcni-school-lessons/day5/snfdata/eeg.rds")
+eeg <- readRDS(here("day5", "snfdata", "eeg.rds"))
 eeg[1:5,1:5]
 
-meth <- readRDS("/home/rstudio/kcni-school-data/kcni-school-lessons/day5/snfdata/methyl.rds")
+meth <- readRDS(here("day5","snfdata","methyl.rds"))
 meth[1:5,1:5]
 ```
 
@@ -287,6 +290,12 @@ ggplot(data=pheno2, aes(y=cg10444350,x=clust4,col=clust4))+
   geom_boxplot()+
   geom_jitter()+
   theme_minimal()
+```
+
+It's good practice to add a call to `sessionInfo`. This will add a log of what R packages (and what versions of those packages) you used to generate the results.
+
+```{r}
+sessionInfo()
 ```
 
 
