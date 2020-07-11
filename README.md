@@ -1,5 +1,9 @@
 # kcni-school-lessons
-A collection of code and lessons for the KCNI Summer School
+
+A collection of code and lessons for the KCNI Summer School.
+The 2020 summer school is now over! But feel free to watch the videos on crowdcast (by clicking on the links below) or go through the tutorial code on your own!
+
+**Crowdcast password for all sessions**: Neuroinformatics
 
 ## How to use git to clone this repo to your own computer
 
