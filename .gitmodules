@@ -5,5 +5,5 @@
 	path = day2/kcni_summer
 	url = https://github.com/stripathy/kcni_summer.git
 [submodule "day4/Toolboxes/SPM12"]
-	path = day7/Toolboxes/SPM12
+	path = day6/Toolboxes/SPM12
 	url = https://github.com/spm/spm12
