@@ -1,5 +1,9 @@
 # kcni-school-lessons
 
+This branch is for the 2021 version of the school..
+
+( more edits to come)
+
 A collection of code and lessons for the KCNI Summer School.
 The 2020 summer school is now over! But feel free to watch the videos on crowdcast (by clicking on the links below) or go through the tutorial code on your own!
 
@@ -17,11 +21,14 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 # The weekly schedule:
 
-- [Day 1: Reproducible Science and Psychiatric Genetics (July 6, 2020)](#day1reproducible-science-and-psychiatric-genetics-july-6-2020)
-- [Day 2: Functional Genomics (July 7, 2020)](https://github.com/krembilneuroinformatics/kcni-school-lessons#day2functional-genomics-july-7-2020)
-- [Day 3: Cortical microcircuit and whole-brain Modelling (July 8, 2020)](https://github.com/krembilneuroinformatics/kcni-school-lessons#day3-cortical-microcircuit-and-whole-brain-modelling-july-8-2020)
-- [Day 4: Bayesian models of perception and learning (July 9, 2020)](https://github.com/krembilneuroinformatics/kcni-school-lessons#day4bayesian-models-of-perception-and-learning-july-9-2020)
-- [Day 5: Psychiatric epidemiology and Population-based subtyping (July 10, 2020)](#day5psychiatric-epidemiology-and-population-based-subtyping-july-10-2020)
+- [kcni-school-lessons](#kcni-school-lessons)
+  - [How to use git to clone this repo to your own computer](#how-to-use-git-to-clone-this-repo-to-your-own-computer)
+- [The weekly schedule:](#the-weekly-schedule)
+  - [Day 1: Reproducible Science and Psychiatric Genetics (July 6, 2020)](#day1reproducible-science-and-psychiatric-genetics-july-6-2020)
+  - [Day 2: Functional Genomics (July 7, 2020)](#day2functional-genomics-july-7-2020)
+  - [Day 3: Cortical microcircuit and whole-brain Modelling (July 8, 2020)](#day3-cortical-microcircuit-and-whole-brain-modelling-july-8-2020)
+  - [Day 4: Bayesian models of perception and learning (July 9, 2020)](#day4bayesian-models-of-perception-and-learning-july-9-2020)
+  - [Day 5: Psychiatric epidemiology and Population-based subtyping (July 10, 2020)](#day5psychiatric-epidemiology-and-population-based-subtyping-july-10-2020)
 
 ## Day 1: Reproducible Science and Psychiatric Genetics (July 6, 2020)
 
