@@ -2,8 +2,8 @@
 	path = envs/kcni-school-envs
 	url = https://github.com/edickie/kcni-school-envs
 [submodule "day2/kcni_summer"]
-	path = day2/kcni_summer
+	path = day3/kcni_summer
 	url = https://github.com/stripathy/kcni_summer.git
 [submodule "day4/Toolboxes/SPM12"]
-	path = day4/Toolboxes/SPM12
+	path = day6/Toolboxes/SPM12
 	url = https://github.com/spm/spm12

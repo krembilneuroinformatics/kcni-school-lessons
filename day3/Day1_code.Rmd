@@ -1,0 +1,501 @@
+---
+title: "Day 1 KCNI summer school"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+## Activity goals
+1. Perform basic quality control on genetic dataset using PLINK
+2. Identify and undersdtand GWAS summary statistics
+3. Use PRSice software to calculate a set of PRS for a study sample
+4. Read PRS into R, visualize distributions, and perform basic association analyses
+
+## Step 0 Downloading the data
+
+Once the kcni-school-lessons git repo has been cloned, you will be able to load the R notebook for day 1 into Rstudio.  
+
+The data for today is located on figshare. We going to download and unzip it into our day1 directory. In the bash terminal we can cd to this directory for the rest of the steps  
+
+```{bash, eval = FALSE}
+## first we need to get inside the day 1 folder
+## you can replace "day1" with the full path to day1 if you don't think you are in the correct place
+cd kcni-school-lessons/day1
+
+## download the data into this folder
+wget -O day1_workdir.zip https://ndownloader.figshare.com/files/23661443?private_link=822ba3189343724ffa4c
+```
+
+Now we should see a zip file appear in our day1 directory - but we still need to unzip the file. Let's do that now.
+
+
+```{bash,eval=FALSE}
+pwd
+ls
+```
+
+```{bash,eval=FALSE}
+unzip day1_workdir.zip # this will create a workdir
+
+# this will unzip the geno data inside the workdir
+mkdir geno
+unzip workdir/geno.zip -d geno
+
+# this will unzip the sumstats data inside the workdir
+mkdir sumstats
+unzip workdir/sumstats.zip -d sumstats
+
+# grab the pheno data
+mkdir pheno
+cp workdir/pheno/* pheno
+
+mkdir prs
+
+# optional - remove the workdir and zipped package
+rm -rf workdir
+rm day1_workdir.zip
+```
+
+## Calculation of polygenic risk scores (PRS)
+### PRS data requirements and formats
+
+PRSice v2 software (http://www.prsice.info/) will be used for high-resolution scoring, initial associations, and some visualization.
+
+We need two things:
+
+1. A set of genotype data for our target sample, preferably imputed genotypes.
+- PLINK file formatted data (fairly compact, portable, and common).
+
+2. A set of summary statistics from a genome-wide association study (GWAS) of our choice.
+- A delimited text file with SNP names, allele labels, and allelic effect sizes.  
+
+First step is to launch bash inside the Rstudio terminal:
+
+```{bash, eval=F}
+bash
+```  
+
+try running `plink --help` to make sure that plink can be found. If not try the `source_this_if_plink_not_found.sh` script.
+
+```{bash,eval=FALSE}
+plink --help
+```
+
+```{bash,eval=FALSE}
+source source_this_if_plink_not_found.sh
+```
+
+```{bash,eval=FALSE}
+plink --help
+```
+
+
+
+***
+### 1. The Genotype dataset
+The first thing we need is genotype data for a study sample. In our case, we will be using modified genotype data from the Religious Orders Study and Memory and Aging Project cohort studies. These are not imputed genotypes (to keep file size manageable), so we will expect that many variants present in the GWAS summary statistics will not be found in the genotype data. This okay for our purposes.  
+
+For a neat R-based package for QC, see plinkQC (Hannah Meyers): ```https://cran.rstudio.com/web/packages/plinkQC/index.html```  
+
+The PLINK binary file formats are arranged as follows:  
+**BED file (.bed)**: binary encoded genotypes for every subject (0/0, 0/1/, 1/1)  
+**BIM file (.bim)**: an index file with SNP-level information  
+**FAM file (.fam)**: an indes file with subject-level information 
+
+
+Let's take a look at the BIM and FAM files:
+```{bash,eval=FALSE}
+head geno/geno_r08_n1000.bim
+```
+
+Note the columns are not named (no header). They correspond to: chromosome, SNP ID (in this case rs#), chromosomal location in centimorgans (largely defunct), physical chromosomal location in base pairs (1-based), minor allele, major allele  
+
+```{bash,eval=FALSE}
+head geno/geno_r08_n1000.fam
+```
+
+Note again that here is no header. The columns correspond to: family ID (useful for related samples), individual ID, father ID, mother ID, sex code, phenotype value.  
+
+The 6th column (phenotype) is often coded at -9 (missing), since in modern analyses of genotype data, we are rarely interested in a single phenotype value for each subject and want to conduct more complex analyses across multiple phenotypes. PLINK can read in extra text files for association analyses that have many columns for multiple phenotypes and co-variates.  
+
+In our case, we only want to generate a set of polygenic scores for each subject in our sample to export and perform our own analyses in R.  
+
+***
+#### Quality control of the genomic dataset
+A useful guide is available at https://choishingwan.github.io/PRS-Tutorial/target/  
+
+We want to verify a few things about our genotype dataset. First, we want summary statistics on how many subjects and SNPs we have. Second, we want to clean the data according to standards appropriate for GWAS. Third, we implement additional QC specific to PRS calculation.
+
+The QC steps can be conveniently accomplished using PLINK. The required QC steps are as follows:
+
+##### **SNP QC. Remove SNPs with:**  
+1A. Hardy-Weinberg equilibrium  
+2A. low genotype rate  
+3A. low minor allele frequency  
+4A. high imputation quality (if using imputed data) [already performed]  
+5A. abnormal heterozygosity  
+
+##### **Subject QC. Remove subjects with:**  
+1B. low genotype rate  
+2B. a high degree of within-sample relatedness (pi-hat > 1.25; first or second degree relative) 
+3B. membership in the original GWAS on which the PRS will be based 
+
+##### Initial QC: 
+``` --bfile ``` = read in binary PLINK fileset  
+``` --maf ```   = remove SNPs with minor allele frequency below 5%  
+``` --hwe ```   = remove SNPs with hardy-weinberg equilibraium p-value below 1x10-6  
+``` --geno ```   = remove SNPs with genotype missingness of greater than %1  
+``` --mind ```   = remove subjects with genotype missingness of greater than %1  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_r08_n1000 \
+    --maf 0.05 \
+    --hwe 1e-6 \
+    --geno 0.01 \
+    --mind 0.01 \
+    --write-snplist \
+    --make-just-fam \
+    --out geno/geno_qc
+```  
+
+**Things to notice:**  
+The output .fam file (geno_qc.fam) is identical to the original .fam file (geno_r08_n1000), since no subjects were removed for low genotype rate.  
+A new full dataset was not written because of the ```--make-just-fam``` and ```--write-snplist``` options, with no ```--make-bed```. This helps save disk space and time, since we will use the .fam file and snplist to perform a single pruning of the data later. For smaller datasets this is not necessary.  
+The geno_qc.snplist file contains SNPs that pass our QC.  
+
+##### **Heterozygosity**  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_r08_n1000 \
+    --extract geno/geno_qc.snplist \
+    --keep geno/geno_qc.fam \
+    --het \
+    --out geno/geno_qc
+```
+
+The output file geno_qc.het gives statistics for rates of SNP heterozygosity across the genome for each subject. Higher-than-expected rates indicate possible sample contamination (possibly inbreeding).  
+
+We need to perform an operation on this output file in R to identify subjects with higher than expected heterozygosity using (arbitrary) criteria. One common threshold for outliers is identifying F-values that are greater or less than 3 standard deviations from the sample mean.  
+
+```{r}
+library(here)
+library(data.table)
+
+# Read in file
+het <- fread(here("day1", "geno", "geno_qc.het"))
+
+# Get samples with F coefficient within 3 SD of the population mean
+valid <- het[F<=mean(F)+3*sd(F) & F>=mean(F)-3*sd(F)] 
+
+# print FID and IID for valid samples
+fwrite(valid[,c("FID","IID")], 
+       here("day1", "geno", "geno_qc.valid.sample"), 
+       sep="\t") 
+
+```  
+
+**How many subjects were removed for outlying heterozygosity?**  
+
+
+##### **Relatedness**  
+
+Before calculating relatedness, it will ease calculations if we first remove SNPs that are in high LD (i.e. strongly correlated). This is because the relatedness calculation works by performing pair-wise calculations among all SNPs in the genome between all subjects, which can take several minutes for millions of variants (in our case 5,629,920). It is not necessary for the PRSice calculations, since PRSice performs its own clumping procedure during its PRS calcuation (and depending on our sample size, we may opt to use a larger secondary reference to determine LD structure, rather than pruning our own dataset a priori).  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_r08_n1000 \
+    --extract geno/geno_qc.snplist \
+    --keep geno/geno_qc.valid.sample \
+    --rel-cutoff 0.125 \
+    --out geno/geno_qc
+```  
+
+Our result will be somewhat dissapointing, since there are no cryptically related subjects in our sample at pi-hat > 1.25. This is what we want - it's always important to check!   
+
+##### **Ancestry**  
+
+The identification of samples with outlying ancestry is important for the calculation of PRS. For the purposes of this workshop, a full ancestry analysis is not feasible. However, we will perform a PCA of our dataset and observe any substantial deviations for demonstration purposes. First we need to prune the dataset for LD in PLINK.  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_r08_n1000 \
+    --extract geno/geno_qc.snplist \
+    --keep geno/geno_qc.valid.sample \
+    --indep-pairwise 50 5 0.2 \
+    --out geno/geno_qc 
+```  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_r08_n1000 \
+    --extract geno/geno_qc.prune.in \
+    --keep geno/geno_qc.valid.sample \
+    --make-bed \
+    --out geno/geno_forPCA
+```  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_forPCA \
+    --pca \
+    --out geno/geno_qc
+```  
+
+The geno_qc.eigenvec gives the first 20 principal components of our genetic data, and allows us to A) visualize ancestral similarities between samples, and B) correct for population microstructure by using as co-variates in our downstream analyses.  
+
+Read into R and plot the first two components:  
+```{r}
+library(ggplot2)  
+
+pcs <- read.table(here("day1", "geno", "geno_qc.eigenvec"))  
+
+ggplot(data=pcs,aes(y=V3,x=V4))+
+  geom_point()+
+  theme_minimal()+
+  labs(y="PC1",x="PC2",title = "Principal components plot of n=990 self-report Caucasian subjects")
+
+```  
+
+In order to determine ancestry, the genotype data must first be merged with a reference dataset (e.g. TOPmed, 1000Genomes, HapMap) prior to PCA, and then subjects can be annotated based on which ancestral clusters they belong to. We will re-examine these principal components once we have calculated our PRS.  
+
+##### **Final generaion of clean dataset using QC files**  
+
+We have two options here: A) we could use the LD-pruned data by setting ```--extract geno_qc.prune.in``` or, as would use the non LD-pruned data by setting ```--extract geno_qc.snplist```. We will perform the latter, to provide PRSIce with more SNPs for matching with our GWAS summary statistics before it performs its own LD pruning (clumping).  
+
+```{bash,eval=FALSE}
+plink \
+    --bfile geno/geno_r08_n1000 \
+    --keep geno/geno_qc.valid.sample \
+    --extract geno/geno_qc.snplist \
+    --make-bed \
+    --out geno/geno_clean
+```  
+
+
+***
+***
+
+### 2. The GWAS summary statistics 
+
+The second thing we need is a set of full genome-wide summary statistics from a GWAS. We will use the summary statistics from  They are stored in ``` /kcni-school-data/sumstats```
+
+These files have been downloaded from the hosted repository linked in the manuscript Data Availability section (https://datashare.is.ed.ac.uk/handle/10283/3203). This is usually the best source for finding full genome-wide summary statistics rather than truncated sets of only the most significant variants.  
+
+Before we begin, we have to check which summary statistics are in the provided file.  
+
+```{bash,eval=FALSE}
+head sumstats/PGC_UKB_depression_genome-wide.txt
+```
+
+We see columns for SNP ID (MarkerName), effect and "other" alleles (A1, A2), observed allele frequency (for effect allele: Freq), the log odds ratio for case-control status (logOR), the standard error of logOR (StdErrLogOR), and the association p-value (P).  
+
+These are fairly standard statistics for a case-control study (binary outcome), though sometimes we will fine beta coefficients, t-statistics, or untransformed ORs. In this case, the OR has been log-transformed. We need raw OR for PRSice. This is most efficiently done in bash using a combination of ```awk```, ```sed```, and ```paste```.  
+
+```{bash,eval=FALSE}
+awk 'NR>1{print exp($5)}' sumstats/PGC_UKB_depression_genome-wide.txt | sed '1i OR' > sumstats/or.txt
+paste -d" " sumstats/PGC_UKB_depression_genome-wide.txt sumstats/or.txt > sumstats/MDD_sumstats.txt
+```  
+
+
+##### **For the base data (summary stats) we further ensure that:**  
+
+1C. The genome build (e.g. hg19, GRCH38) matches between base and target data [only necessary if SNP IDs are represented by chromosome and location]  
+2C. Effect alleles are correctly specified  
+3C. Only autosomal SNPs are included in the calculation (unless proper sex checking has been performed)  
+4C. Heritability of the source GWAS is substantial enough to warrant PRS calculation (h2>0.05). In our case, SNP-based h2 has been estimated for us by Howard et al. (h2~0.4)    
+
+***
+
+### 3. Selecting parameters for PRS calculation
+
+There are several central parameters to consider when calculating a set of PRS:  
+- Which GWAS p-value thresholds do we want to include (i.e. how many PRS)?  
+- How do we want to deal with the issue of linkage disequilibrium (LD) (i.e. clumping)?  
+- Which type of PRS calculation do we want to make?  
+- Which allelic effect model do we want to use (i.e. additive, dominant, recessive)?  
+
+
+Three important steps will be performed automatically by PRSice.  
+
+1. Effect size shrinkage is not necessary, since many p-value thresholds will be tested  
+2. Checking for ambiguous alleles  
+3. allele flipping  
+
+***
+
+### 4. Perform high-resolution scoring against a phenotype
+
+```{bash,eval=FALSE}
+pwd
+```
+
+Note: on some computers, this will get killed for RAM reasons. The summary stats and genotype files are quite large - if you run into this problem, replace the input genotype file with the pruned dataset that we used for principal components analysis: ``` --target geno/geno_forPCA ```.  
+
+```{bash, eval = FALSE}
+## cd ~/kcni-school-lessons/day1
+
+PRSice_linux \
+    --base sumstats/MDD_sumstats.txt \
+    --or \
+    --pvalue P \
+    --snp MarkerName \
+    --stat OR \
+    --pheno pheno/phenotype_file_withPCs.txt \
+    --pheno-col depression5 \
+    --binary-target F \
+    --cov pheno/phenotype_file_withPCs.txt \
+    --cov-col msex,age,education,@PC[1-5] \
+    --target geno/geno_forPCA \
+    --lower 5e-08 \
+    --upper 0.5 \
+    --interval 0.00001 \
+    --no-full \
+    --out prs/MDD 
+```  
+
+
+### High resolution plot in R
+
+```{r}
+scores <- read.table(here("day1", "prs","MDD.prsice"),header=T)
+ggplot(data=scores, aes(y=-log10(P),x=log10(Threshold)))+
+  geom_point()+
+  geom_line()+
+  labs(y="-log10(p-value)",
+       x="Summary stats p-value threshold",
+       title="High-resolution plot of PRS associations")+
+  theme_minimal()
+
+```
+
+
+
+***
+Calculate a set of PRS values, running no other statistical operation:
+```{bash, eval = FALSE}
+## cd ~/kcni-school-lessons/day1
+
+PRSice_linux \
+    --all-score  \
+    --bar-levels 5e-08,1e-06,1e-05,0.0001,0.001,0.05,0.01,1 \
+    --base sumstats/MDD_sumstats.txt \
+    --fastscore  \
+    --or  \
+    --no-regress \
+    --out prs/MDD_noregress \
+    --print-snp  \
+    --pvalue P \
+    --snp MarkerName \
+    --stat OR \
+    --target geno/geno_forPCA
+```  
+
+***
+### 5. Post calculation quality control
+
+After the scores have been calculated, there are a few important things to check in the PRSice log file before continuing.
+
+```{bash,eval=FALSE}
+cat prs/MDD_noregress.log
+```  
+
+**Were there allelic mismatches? How many? Should we be worried?**  
+**How many SNPs were found in both our genotype data and the GWAS summary stats?**   
+**How many independent SNPs were indentified by clumping?**  
+
+***
+### Exploratory association analyses of MDD PRS with phenotype data  
+
+Once we are confident that our scores have been calculated correctly, incorporating the correct number of properly matched SNPs, we can proceed to using these values in any of a number of downstream analyses.  
+
+First, we will read in a phenotype dataset with a set of gene expression values and co-variates for a large subset of the subjects that we calculated PRS for. The important thing is that IIDs (col 2) from the genotype FAM file are mappable to our phenotype data.  
+
+Note: we can perform a number of association analyses within PRSice itself - however, R has much more extensive and robust analytical and visualization features. Once you are able to run basic PRSice code and manage phenotype and covariate files, you can explore the full PRSice toolkit.  
+
+### Reading data into R  
+```{r}
+pcs <- read.table(here("day1","geno","geno_qc.eigenvec"))
+names(pcs) <- c("FID","IID",paste0("PC",seq(1,20))) 
+
+prs <- read.table(here("day1","prs","MDD_noregress.all_score"),header=T)
+
+pheno <- readRDS(here("day1","pheno","phenotype_file.rds"))
+```  
+
+### merge datasets  
+```{r}
+pheno_prs <- merge(pheno,prs,by=c("IID","FID"))
+dat <- merge(pheno_prs,pcs,by=c("IID","FID"))
+```
+
+### set up analysis
+```{r}
+prs_vars <- names(prs)[-c(1:2)]
+pc_vars <- names(pcs)[-c(1:2)]
+```
+
+### evaluate correlations among PRS
+```{r}
+cormat <- cor(as.matrix(dat[,prs_vars]))
+heatmap(cormat)
+```
+
+### Test our PRS for associations with genomic PCs (ancestry dimensions)
+```{r}
+library(tidyr)
+
+mod <- lm(data=dat, as.matrix(dat[,pc_vars]) ~ Pt_5e.08)
+mod
+
+results_pc <- do.call(rbind,lapply(summary(mod),function(mod){ coefficients(mod)[2,]})) %>%
+  as.data.frame()
+
+names(results_pc) <- c("beta","se","t","p")
+results_pc$pheno <- gsub("Response ","",rownames(results_pc))
+
+ggplot(data=results_pc, aes(y=-log10(p)*sign(t),x=pheno))+
+  geom_point()+
+  geom_hline(yintercept = c(log10(0.05),0,-log10(0.05)),
+             col=c("red","blue","red"),
+             lty=c(3,1,3))+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = -90,hjust=0))
+```  
+
+Plot the association  
+``` {r}
+ggplot(data=dat,aes(y=PC5,x=Pt_5e.08))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  theme_minimal()
+```
+
+### Test our PRS against some additional phenotypes
+Identify some variables to test for association
+```{r}
+names(dat)
+phenotypes <- names(dat)[c(8,10:26)]
+
+mod <- lm(data=dat, as.matrix(dat[,phenotypes]) ~ Pt_5e.08 + msex + education + age + PC1 + PC2 + PC3 + PC4 + PC5)
+mod
+```
+
+Compile results for PRS associations and plot
+```{r}
+results <- do.call(rbind,lapply(summary(mod),function(mod){ coefficients(mod)[2,]})) %>%
+  as.data.frame()
+
+names(results) <- c("beta","se","t","p")
+results$pheno <- gsub("Response ","",rownames(results))
+
+ggplot(data=results, aes(y=-log10(p)*sign(t),x=pheno))+
+  geom_point()+
+  geom_hline(yintercept = c(log10(0.05),0,-log10(0.05)),
+             col=c("red","blue","red"),
+             lty=c(3,1,3))+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = -90,hjust=0))
+```
+
