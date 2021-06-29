@@ -10,3 +10,6 @@
 [submodule "day2/Model-Evaluation-Activity"]
 	path = day2/Model-Evaluation-Activity
 	url = https://github.com/mmaslej/Model-Evaluation-Activity.git
+[submodule "day1/example-python-repo"]
+	path = day1/example-python-repo
+	url = https://github.com/krembilneuroinformatics/example-python-repo.git
