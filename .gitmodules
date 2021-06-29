@@ -13,3 +13,6 @@
 [submodule "day1/example-python-repo"]
 	path = day1/example-python-repo
 	url = https://github.com/krembilneuroinformatics/example-python-repo.git
+[submodule "day1/example-r-repo"]
+	path = day1/example-r-repo
+	url = https://github.com/krembilneuroinformatics/example-r-repo.git
