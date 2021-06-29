@@ -142,7 +142,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **Compute Environment**: MATLAB. 
 - All students in the interactive stream should have been emailed a link to a temporary MATLAB license that can be used for this course. Contact KCNI.School@camh.ca with any questions.
-- Additional setup instructions are available in the [day5 folder](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/day5#matlab-code-accompanying-day-4-of-the-kcni-school)
+- Additional setup instructions are available in the [day6 folder](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/day6)
 
 | Time (EST) | Session | |
 |---- |----|---|
