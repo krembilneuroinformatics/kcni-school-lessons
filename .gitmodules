@@ -7,3 +7,6 @@
 [submodule "day4/Toolboxes/SPM12"]
 	path = day6/Toolboxes/SPM12
 	url = https://github.com/spm/spm12
+[submodule "day2/Model-Evaluation-Activity"]
+	path = day2/Model-Evaluation-Activity
+	url = https://github.com/mmaslej/Model-Evaluation-Activity.git
