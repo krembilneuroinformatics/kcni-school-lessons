@@ -148,11 +148,11 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Bayesian Models of Learning | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/21) |
 | 10:30-10:45	| Morning Break |Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
-| 10:45-12:15	| Turorial 1:  Hierarchical Gaussian Filter and Simulating Learners | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/22) |
+| 10:45-12:15	| Tutorial 1:  Modelling Abnormal Beliefs (Delusions) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/22) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
-| 1:00-2:30pm	 | Lecture 2: Computational Modelling of EEG Data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/23) |
+| 1:00-2:30pm	 | Lecture 2: Integration of Neuroimaging and Electrophysiological Data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/23) |
 | 2:30-2:45pm	 | Afternoon Break | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
-| 2:45-4:15pm	 | Tutorial 2: Single-trial EEG Modelling | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/24) |
+| 2:45-4:15pm	 | Tutorial 2: Modelling Neuroimaging Data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/24) |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
