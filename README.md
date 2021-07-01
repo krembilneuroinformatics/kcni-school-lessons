@@ -27,7 +27,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
   - [Day 1: Welcome! Understanding clinical research questions and reproducible science (July 5, 2021)](#day1welcome-understanding-clinical-research-questions-and-reproducible-science-july-5-2021)
   - [Day 2: Applied ethics in machine learning and mental health (July 6, 2021)](#day2applied-ethics-in-machine-learning-and-mental-health-july-6-2021)
   - [Day 3: Fundamental methods for genomic and single-cell transcriptome analysis (July 7, 2021)](#day3fundamental-methods-for-genomic-and-single-cell-transcriptome-analysis-july-7-2021)
-  - [Day 4: Brain Microcircuit Simulations of Depression (July 8, 2021)](#day4-brain-microcircuit-simulations-of-depression-july-8-2021)
+  - [Day 4: Simulating Brain Microcircuit Activity and Signals in Mental Health (July 8, 2021)](#day4simulating-brain-microcircuit-activity-and-signals-in-mental-health-july-8 2021)
   - [Day 5: Whole-Brain Modelling and Neuroimaging Connectomics (July 9, 2021)](#day5-whole-brain-modelling-and-neuroimaging-connectomics-july-9-2021)
   - [Day 6: Bayesian Models of Learning and Integration of Neuroimaging Data  (July 12, 2021)](#day6bayesian-models-of-learning-and-integration-of-neuroimaging-data--july-12-2021)
   - [Day 7: Digital Health and Population-Based Data Resources (July 13, 2021)](#day7digital-health-and-population-based-data-resources-july-13-2021)
@@ -35,7 +35,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 ## Day 1: Welcome! Understanding clinical research questions and reproducible science (July 5, 2021)
 
-**Instructors:** Erin Dickie, Sean Hill, Dr Victor Tang, Dr Brett Jones
+**Instructors:** Erin Dickie, Sean Hill, Victor Tang, Brett Jones
 
 **TA's:** Sejal Patel, Kevin Kadak, Taha Morshedzadeh, Kevin Witczak
 
@@ -92,26 +92,23 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
-## Day 4: Brain Microcircuit Simulations of Depression (July 8, 2021)
+## Day 4: Simulating Brain Microcircuit Activity and Signals in Mental Health (July 8, 2021)
 
 **Instructors:** Etay Hay & Frank Mazza
-
-**TA's** TBA
 
 **Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment)
 
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Modeling brain microcircuits activity in health and depression | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/13) |
+| 9:00-10:30	| Lecture 1: Simulating brain microcircuit activity in mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/13) |
 | 10:30-10:45	| Morning Break |Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
-| 10:45-12:15	| Lecture 2: Simulating EEG from brain microcircuits in health and depression | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/14) |
+| 10:45-12:15	| Lecture 2: Simulating EEG from brain microcircuits in mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/14) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
-| 1:00-2:30pm	 | Workshop 1: simulating neurons, microcircuits and EEG signals
- | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/15) |
-| 2:30-2:45pm	 | Afternoon Break | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
-| 2:45-4:15pm	 | Workshop 2: exercises | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/16) |
-| 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
+| 1:00-2:15pm	 | Workshop 1: Simulating and analyzing spiking from neurons and microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/15) |
+| 2:15-2:30pm	 | Afternoon Break | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
+| 2:30-4:00pm	 | Workshop 2: Simulating and analyzing EEG signals from brain microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/16) |
+| 4:00-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town](https://gather.town/mshCrgMgr6v17lbm/kcni_school)|
 
 
 ## Day 5: Whole-Brain Modelling and Neuroimaging Connectomics (July 9, 2021)
