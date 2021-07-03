@@ -23,8 +23,8 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
   - [Day 6: Bayesian Models of Learning and Integration of Neuroimaging Data  (July 12, 2021)](#day6bayesian-models-of-learning-and-integration-of-neuroimaging-data--july-12-2021)
   - [Day 7: Digital Health and Population-Based Data Resources (July 13, 2021)](#day7digital-health-and-population-based-data-resources-july-13-2021)
   - [Day 8:  Integrative research methods and Final Panel Discussion (July 14, 2021)](#day8-integrative-research-methods-and-final-panel-discussion-july-14-2021)
-  - [Ways to connect with TA's instructors and classmates!](#ways-to-connect-with-tas-instructors-and-classmates)
-  - [Are you looking for the 2020 content?](#are-you-looking-for-the-2020-content)
+- [Ways to connect with TA's instructors and classmates!](#ways-to-connect-with-tas-instructors-and-classmates)
+- [Are you looking for the 2020 content?](#are-you-looking-for-the-2020-content)
 
 ## Day 1: Welcome! Understanding clinical research questions and reproducible science (July 5, 2021)
 
@@ -170,14 +170,14 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | 2:45-4:15pm	 | Final Social Hour? | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/32) |
 | 4:30-5:00pm	|  Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
-## Ways to connect with TA's instructors and classmates!
+# Ways to connect with TA's instructors and classmates!
 
 - join the conversation with school instructors on slack [slack invite link](https://join.slack.com/t/kcnisummerschool/shared_invite/zt-rnztc4vq-6Z5ACwR~W2OfYySNtzOJJA)
 - come speak to us during the breaks in gather.town [gather.town link][link_gathertown]
 - start a conversation about this content in our [github discussions board](https://github.com/krembilneuroinformatics/kcni-school-lessons/discussions) 
 - Remember you can always re-watch content after the session ends on Chrowdcast [Chrowdcast Link](https://www.crowdcast.io/e/kcni-summer-school-2021)
 
-## Are you looking for the 2020 content? 
+# Are you looking for the 2020 content? 
 
 The 2020 Summer School content is archive in the 2020 release https://github.com/krembilneuroinformatics/kcni-school-lessons/releases/tag/2020. 
 
