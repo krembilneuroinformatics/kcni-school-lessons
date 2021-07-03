@@ -14,5 +14,5 @@ cd $SCRATCH
 singularity exec \
   --home $SCRATCH/kcni-school-data:/home/neuro/ \
   --bind /scinet/course/ss2020/5_neuroimaging/jupyter_call_helper.sh:/jupyter_call_helper.sh \
-  /scinet/course/ss2020/5_neuroimaging/containers/edickie_kcnischool-jupyter_latest-2020-07-07.sif \
+  /scinet/course/ss2020/5_neuroimaging/containers/edickie_kcnischool-jupyter_latest-2021-07-02.sif \
   /jupyter_call_helper.sh ${my_port}
