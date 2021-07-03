@@ -12,9 +12,9 @@ echo "DO NOT CLOSE THIS TERMINAL - check intructions for the next step"
 cd $SCRATCH
 export RSTUDIO_PASSWORD=${rstudio_psswd}
 singularity exec \
-  --home $SCRATCH/kcni-school-data:/home/rstudio/kcni-school-data \
+  --home $SCRATCH/kcni-school-data:/home/rstudio/kcni-school-lessons \
   --bind /scinet/course/ss2019/3/8_bayesianmri/rstudio_auth.sh:/usr/lib/rstudio-server/bin/rstudio_auth.sh \
-  /scinet/course/ss2020/5_neuroimaging/containers/edickie_kcnischool-rstudio_latest-2020-06-26-a07309756986.sif \
+  /scinet/course/ss2020/5_neuroimaging/containers/edickie_kcnischool-rstudio_latest-2021-07-02.sif \
   rserver \
   --auth-none 0 \
   --auth-pam-helper-path rstudio_auth.sh \
