@@ -6,6 +6,21 @@ These dockers are posted to dockerhub so that they should be able to be "pulled"
 
 ## How to run from the dockers
 
+- [kcni-school-envs](#kcni-school-envs)
+  - [How to run from the dockers](#how-to-run-from-the-dockers)
+    - [Step 1. Install docker on your computer.](#step-1-install-docker-on-your-computer)
+    - [Step 2 - clone the school environment onto your local computer](#step-2---clone-the-school-environment-onto-your-local-computer)
+    - [Running the R and genomics environment](#running-the-r-and-genomics-environment)
+      - [If we update the software thoughout the week you might need use docker pull to download the updates](#if-we-update-the-software-thoughout-the-week-you-might-need-use-docker-pull-to-download-the-updates)
+    - [Running the Jupyter Environment](#running-the-jupyter-environment)
+      - [To pull updates to this software](#to-pull-updates-to-this-software)
+    - [Known docker issues and solutions](#known-docker-issues-and-solutions)
+      - [If you get an error about space access..](#if-you-get-an-error-about-space-access)
+      - [Killing a running container (in order to switch your environment)](#killing-a-running-container-in-order-to-switch-your-environment)
+        - [docker container ls](#docker-container-ls)
+        - [docker container kill](#docker-container-kill)
+  - [how to edit and rebuild these dockers from the github repo](#how-to-edit-and-rebuild-these-dockers-from-the-github-repo)
+
 ### Step 1. Install docker on your computer.
 
 To install Docker follow the instructions at: https://www.docker.com/products/docker-desktop.
@@ -16,37 +31,23 @@ To install Docker follow the instructions at: https://www.docker.com/products/do
 
 You may need to configure file sharing with Docker using Docker Desktop. More on this below.
 
+### Step 2 - clone the school environment onto your local computer
+
+Note that some of the tutorial content and data is located within "submodules" - or pointers to other repo's. To get EVERYTHING use:
+
+```sh
+git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-school-lessons.git
+```
+
 ### Running the R and genomics environment
 
 To start the R and genomics environment. Open up a terminal (in Windows this is PowerShell). And type:
 
-** Note that this command has one "mount" or "bind" argument to allow you to attach one folder (or directory) from you computer to the container. This gives you one folder where you can read and write files from both you local computer programs, and from inside the container.
-
-To download and install the software. When you run this - you should see a lot of things happening. Because Docker will first download the docker image or the software you need (~3G) then start up the environment. The "docker image" or the software will be saved to your computer, so this only needs to be run once..
-
 ```sh
-## this installs the software
-docker pull edickie/kcnischool-rstudio:latest
+docker compose up rstudio
 ```
 
-To run the system  - Remember to replace `<path/to/you/data>` with a location on your computer where you will be storing you KCNI school data)
-
-```sh
-## this runs the container
-docker run --rm \
- -p 127.0.0.1:8787:8787 \
- -e DISABLE_AUTH=true \
- -v <path/to/your/data>:/home/rstudio/kcni-school-data \
- edickie/kcnischool-rstudio:latest
-```
-
-The first time you run this - you should see a lot of things happening. Because Docker will first download the docker image or the software you need (~3G) then start up the environment. The "docker image" or the software will be saved to your computer, so the next time you run this it will be faster.
-
-Note: on window's powershell the `\` character doesn't work - so the link above needs to be all on one line..
-
-```sh
-docker run --rm -p 127.0.0.1:8787:8787 -e DISABLE_AUTH=true -v C:\Users\erin_dickie\data\kcni-school-data\:/home/rstudio/kcni-school-data edickie/kcnischool-rstudio:latest
-```
+When you run this - the first time - you should see a lot of things happening. Because Docker will first download the docker image or the software you need (~5G) then start up the environment. The "docker image" or the software will be saved to your computer. This will run faster the next time you type it.
 
 When things calm down - you should see a message that "server" has start. It should end with `[services.d] done.`
 
@@ -68,6 +69,32 @@ Skipping authentication as requested
 [services.d] done.
 ```
 That means it worked! Then open your browser and navigate to: http://localhost:8787/ and you should see your rstudio terminal!
+
+#### If we update the software thoughout the week you might need use docker pull to download the updates
+
+```sh
+## this installs the software
+docker pull edickie/kcnischool-rstudio:latest
+```
+
+### Running the Jupyter Environment
+
+We created a second environment that contains python and a jupyter notebook environment for Physiological Modeling.
+This one is build (or installed) with a very similar command.
+
+```sh
+docker compose up jupyter
+```
+
+When this runs - you should see a web address starting with is printed to terminal. Copy and Paste this address into your browser and you should see the a jupyter notebook home!
+
+#### To pull updates to this software
+
+```sh
+docker pull edickie/kcnischool-jupyter:latest
+```
+
+### Known docker issues and solutions
 
 #### If you get an error about space access..
 
@@ -118,33 +145,9 @@ If we now run `docker container ls` we should see that `priceless_turing` is no 
 
 Now we can move on and run a new container! Like the one for our python environment!
 
-### Running the Jupyter Physiological Modeling Environment
-
-We created a second environment that contains python and a jupyter notebook environment for Physiological Modeling.
-This one is build (or installed) with a very similar command.
-
-Building the env.
-```sh
-docker pull edickie/kcnischool-jupyter:latest
-```
-
-To run the system  - Remember to replace `<path/to/you/data>` with a location on your computer where you will be storing you KCNI school data)
-
-```sh
-docker run --rm \
-  -p 8888:8888 \
-  -v <path/to/your/data>:/home/neuro/kcni-school-data \
-  edickie/kcnischool-jupyter:latest
-```
 
 
-For Erin (on Windows) the command looks like this.
 
-```sh
-docker run --rm -p 8888:8888 -v C:\Users\erin_dickie\data\kcni-school-data\:/home/neuro/kcni-school-data edickie/kcnischool-jupyter:latest
-```
-
-When this runs - you should see a web address starting with is printed to terminal. Copy and Paste this address into your browser and you should see the a jupyter notebook home!
 
 
 ---

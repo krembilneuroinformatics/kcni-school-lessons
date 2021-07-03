@@ -208,5 +208,9 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock -v C:\Users\erin_dickie\
 The jupyter singularity image was built directly on SciNet using the following command
 
 ```sh
-singularity build edickie_kcnischool-jupyter_latest-2020-07-07.sif docker://edickie/kcnischool-jupyter:latest
+singularity build edickie_kcnischool-jupyter_latest-2021-07-02.sif docker://edickie/kcnischool-jupyter:latest
+```
+
+```sh
+singularity build edickie_kcnischool-rstudio_latest-2021-07-02.sif docker://edickie/kcnischool-rstudio:latest
 ```
