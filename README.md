@@ -33,7 +33,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 **TA's:** Kevin Kadak, Taha Morshedzadeh, Kevin Witczak
 
 **Computing Environment**:
-+ we will be introducing our rstudio and jupyter docker environments, available from dockerhub `edickie/kcnischool-rstudio:latest` & `edickie/kcnischool-jupyter:latest`[our docker setup instructions](../kcni-school-lessons/envs/README.md). 
++ we will be introducing our rstudio and jupyter docker environments, available from dockerhub `edickie/kcnischool-rstudio:latest` & `edickie/kcnischool-jupyter:latest`[our docker setup instructions](./envs/README.md). 
 + Also grab Erin's reproducibiltiy slides from [here]( https://docs.google.com/presentation/d/1weWaancrZH39zGSc_5Ew2k6chshadA3QP-H2wRTSJyM/edit?usp=sharing)
 
 | Time (EST) | Session | |
