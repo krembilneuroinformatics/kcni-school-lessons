@@ -20,7 +20,7 @@ echo "The final step will be to open http://localhost:8787 in your browser"
 echo ""
 echo "Your username for rstudio will be:"
 echo "  User: ${USER}"
-echo "  passwort: ${PASSWORD}"
+echo "  Password: ${PASSWORD}"
 echo ""
 echo "DO NOT CLOSE THIS TERMINAL - read the instructions printed above!"
 
@@ -53,11 +53,11 @@ mkdir -p "$TMPDIR/var/run"
 # You may need here just to replace the fourth bind option, or drop
 cd $SCRATCH
 singularity exec \
-  --home $SCRATCH/kcni-school-lessons \
+  --home="$SCRATCH/kcni-school-lessons" \
   --bind="$TMPDIR/var/lib:/var/lib/rstudio-server" \
   --bind="$TMPDIR/var/run:/var/run/rstudio-server" \
   --bind="$TMPDIR/tmp:/tmp" \
   ${sing_image} \
-  rserver --www-port ${PASSWORD} --auth-none=0 --auth-pam-helper-path=pam-helper 
+  rserver --www-port=${RSTUDIO_PORT} --auth-none=0 --auth-pam-helper-path=pam-helper 
 
 
