@@ -16,3 +16,6 @@
 [submodule "day1/example-r-repo"]
 	path = day1/example-r-repo
 	url = https://github.com/krembilneuroinformatics/example-r-repo.git
+[submodule "day3/kcni-summer-school-day-3"]
+	path = day3/kcni-summer-school-day-3
+	url = https://github.com/keon-arbabi/kcni-summer-school-day-3.git
