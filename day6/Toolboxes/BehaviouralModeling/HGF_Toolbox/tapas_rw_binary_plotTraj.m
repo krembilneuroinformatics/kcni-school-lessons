@@ -11,11 +11,12 @@ function tapas_rw_binary_plotTraj(r)
 % COPYING or <http://www.gnu.org/licenses/>.
 
 % Set up display
-scrsz = get(0,'screenSize');
-outerpos = [0.2*scrsz(3),0.7*scrsz(4),0.8*scrsz(3),0.3*scrsz(4)];
-figure(...
-    'OuterPosition', outerpos,...
-    'Name','RW binary fit results');
+figure('units','normalized','outerposition',[0 0 1 1],'Name', 'HGF trajectories');
+% scrsz = get(0,'screenSize');
+% outerpos = [0.2*scrsz(3),0.7*scrsz(4),0.8*scrsz(3),0.3*scrsz(4)];
+% figure(...
+%     'OuterPosition', outerpos,...
+%     'Name','RW binary fit results');
 
 % Number of trials
 t = length(r.u(:,1));

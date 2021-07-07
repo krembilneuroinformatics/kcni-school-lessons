@@ -11,6 +11,6 @@ midValue = mean(get(gca, 'CLim'));  % Get the middle value of the color range
 % they can be easily seen over the background color
 textColors = repmat(values(:) > midValue, 1, 3);
 set(hStrings, {'Color'}, num2cell(textColors, 2));  % Change the text colors
-set(hStrings,'Fontsize',40);
+set(hStrings,'Fontsize',20);
 
 
