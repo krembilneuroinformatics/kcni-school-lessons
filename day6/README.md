@@ -16,7 +16,7 @@ Tutorial: Modeling Abnormal Beliefs
 2. Part 1: First steps with the HGF: Run `'HGF_tutorial_generate_task'` section by section (you can do so by clicking in the corresponding section of the script and clicking the 'Run and Advance' Button at the top of the Matlab window next to the green triangle labelled 'Run').
 3. Part 2: Simulating prototypical patients: Run `'HGF_tutorial_generate_learners'` section by section
 
-EEG Analysis
+Tutorial: Modeling Neuroimaging Data
 ------------
 1. Download the open source data file 'subject1.bdf' at `https://www.fil.ion.ucl.ac.uk/spm/data/eeg_mmn/`and place in a new folder */day4/eeg/data/
 2. Set your environment using `'kcni_setup_paths'`
