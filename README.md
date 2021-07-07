@@ -35,14 +35,16 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 **Computing Environment**:
 + we will be introducing our rstudio and jupyter docker environments, available from dockerhub `edickie/kcnischool-rstudio:latest` & `edickie/kcnischool-jupyter:latest`[our docker setup instructions](./envs/README.md). 
 + Also grab Erin's reproducibiltiy slides from [here]( https://docs.google.com/presentation/d/1weWaancrZH39zGSc_5Ew2k6chshadA3QP-H2wRTSJyM/edit?usp=sharing)
++ launch rstudio binder example  [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day1rstudio] 
++ launch jupyter binder example  [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day1rstudio] 
 
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Welcome and Orientation + Neuroinformatics across scales - Sean Hill| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/1) |
-| 10:45-12:15	| Lecture 2:  Problems and opportunities in the diagnosis and treatment of major depression - Drs Victor Tang & Dr Brett Jones | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/2) |
+| 10:45-12:15	| Lecture 2:  Problems and opportunities in the diagnosis and treatment of major depression - Drs Victor Tang & Dr Brett Jones [download slides as pdf](day1/KCNISummerSchool-MDDClinicalTalk.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/2) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Workshop 1: Guiding principles for FAIR and open science  - Erin Dickie & Sejal Patel| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/3) |
-| 2:45-4:15pm	 | Workshop 2: Tools for Reproducible Science - Erin Dickie & Sejal Patel | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/4) |
+| 2:45-4:15pm	 | Workshop 2: Tools for Reproducible Science - Erin Dickie & Sejal Patel rstudio example  [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day1rstudio]    jupyter example [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day1python] | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/4) |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
 ## Day 2: Applied ethics in machine learning and mental health (July 6, 2021)
@@ -50,14 +52,16 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 **Instructors:** Daniel Buchman, Marta Maslej & Laura Sikstrom
 
 **Computing Environment**:
-+ we will use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [docker instructions](../kcni-school-lessons/envs/README.md) 
++ setup instructions and code in [the day2 folder](day2/README.md)
++ we will use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [docker instructions](../kcni-school-lessons/envs/README.md)
++ open rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day3rstudio]
 
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Introduction to AI Ethics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/5) |
 | 10:45-12:15	| Lecture 2:  Fairness and Health Equity | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/6) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
-| 1:00-2:30pm	 | Workshop 1: Research Design, Data Collection, Model Construction and Validation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/7) |
+| 1:00-2:30pm	 | Workshop 1: Research Design, Data Collection, Model Construction and Validation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/7)  [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day2rstudio]|
 | 2:45-4:15pm	 | Workshop 2: Analysis, Interpretation and Knowledge Exchange and/or Translation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/8) |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
@@ -69,14 +73,15 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **Computing Environment**: we will continue to use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [docker instructions](../kcni-school-lessons/envs/README.md)
 
+Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day3rstudio] (Note: we are aware that binder does not have enough RAM for some bits)
+
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Basics of Genotype, Central dogma, GWAS, and Polygenic Risk Scores | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/9) |
 | 10:45-12:15	| Lecture 2:  Transcriptomics at the single-cell and bulk level level | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/10) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
-| 1:00-2:30pm	 | Workshop 1: Intro to transcriptomic data types, including single-cell and bulk RNAseq | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/11) |
-| 2:30-2:45pm	 | Afternoon Break | Join us in [gather.town][link_gathertown]|
-| 2:45-4:15pm	 | Workshop 2: Explore cellular changes in major depression using bulk and single-cell RNAseq data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/12) |
+| 1:00-2:30pm	 | Workshop 1: Intro to transcriptomic data types, including single-cell and bulk RNAseq | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/11) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day3rstudio] |
+| 2:45-4:15pm	 | Workshop 2: Explore cellular changes in major depression using bulk and single-cell RNAseq data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/12) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day3rstudio] |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
 
@@ -84,15 +89,15 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **Instructors:** Etay Hay & Frank Mazza
 
-**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment)
+**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment) You can also run the tutorial code intercatively in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter]
 
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Simulating brain microcircuit activity in mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/13) |
 | 10:45-12:15	| Lecture 2: Simulating EEG from brain microcircuits in mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/14) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
-| 1:00-2:15pm	 | Workshop 1: Simulating and analyzing spiking from neurons and microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/15) |
-| 2:30-4:00pm	 | Workshop 2: Simulating and analyzing EEG signals from brain microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/16) |
+| 1:00-2:15pm	 | Workshop 1: Simulating and analyzing spiking from neurons and microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/15) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter] |
+| 2:30-4:00pm	 | Workshop 2: Simulating and analyzing EEG signals from brain microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/16) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter] |
 | 4:00-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
 
@@ -103,7 +108,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 **TA's** Shreyas Harita, Jerrold Jeyachandra, Kevin Kadak
 
-**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment)
+**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment) This code can also be run in our school binder instance [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter]
 
 
 | Time (EST) | Session | |
@@ -164,7 +169,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Types of integrative research and Whole Person Modelling | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/29) |
 | 10:30-10:45	| Morning Break |Join us in [gather.town][link_gathertown]|
-| 10:45-12:15	| Workshop: SNF / Subtyping | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/30) |
+| 10:45-12:15	| Workshop: SNF / Subtyping | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/30)[![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day78rstudio] |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Group Discussion - Moderated by  | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/31) |
 | 2:45-4:15pm	 | Final Social Hour? | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/32) |
@@ -181,6 +186,11 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 The 2020 Summer School content is archive in the 2020 release https://github.com/krembilneuroinformatics/kcni-school-lessons/releases/tag/2020. 
 
-
+[link_binder_day1rstudio]: http://mybinder.org/v2/gh/krembilneuroinformatics/example-r-repo/HEAD?urlpath=rstudio
+[link_binder_day1python]: http://mybinder.org/v2/gh/krembilneuroinformatics/example-python-repo/HEAD
+[link_binder_day2rstudio]: https://mybinder.org/v2/gh/mmaslej/Model-Evaluation-Activity.git/HEAD?urlpath=rstudio
+[link_binder_day3rstudio]: https://mybinder.org/v2/gh/keon-arbabi/kcni-summer-school-day-3.git/HEAD?urlpath=rstudio
+[link_binder_day45jupyter]: https://mybinder.org/v2/gh/krembilneuroinformatics/binder-jupyter-school/HEAD?urlpath=git-pull?repo=https://github.com/krembilneuroinformatics/kcni-school-lessons
+[link_binder_day78rstudio]: http://mybinder.org/v2/gh/krembilneuroinformatics/kcni-school-lessons/HEAD?urlpath=rstudio
 [link_gathertown]: https://gather.town/i/HmElpLkR
 
