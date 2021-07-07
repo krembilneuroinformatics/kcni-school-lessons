@@ -28,7 +28,7 @@ Assignments
 
 	a. What clinical condition do you want to simulate?
 	b. What parameters could you change to simulate belief updating corresponding to this condition?
-	C. Could you obtain similar belief trajectories using a different set of parameters?
+	c. Could you obtain similar belief trajectories using a different set of parameters?
 
 2. Use the EEG tutorial code to compare the top 30% of `prediction error (PE) signals` generating pseudo-conditions and ERPs of the top 30% and bottom 30% of PE. 	
 
