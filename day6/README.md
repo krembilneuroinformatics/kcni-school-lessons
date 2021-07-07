@@ -4,9 +4,9 @@ This code runs on MATLAB R2020a, the license provided with this course. Please, 
 
 Getting Started
 ---------------
-1.  Please clone this repo (type on Linux, Mac):
+1.  Please, clone this repository recursively. Otherwise, you will not have all the necessary toolboxes to run the code. You can do so using the following command:
 ```
-git clone --recursive https://github.com/krembilneuroinformatics/kcni-school-lessons.git MyFolderKCNISchool
+git clone --recursive https://github.com/krembilneuroinformatics/kcni-school-lessons.git
 ```
 2. Set your environment using `'kcni_setup_paths'`
 
