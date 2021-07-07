@@ -160,7 +160,7 @@ c.logitphisa = [NaN,        0,    0];
 % an alternative parametrization of the same model.
 % Undefined (therefore NaN) at the first level.
 c.mmu = [NaN, c.mu_0mu(2), c.mu_0mu(3)];
-c.msa = [NaN, 0,           1];
+c.msa = [NaN, 0,           0];
 
 % Upper bounds on kappas (lower bound is always zero)
 % Format: row vector of length n_levels-1
