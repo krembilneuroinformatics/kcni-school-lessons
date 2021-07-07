@@ -129,10 +129,11 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 **Compute Environment**: [MATLAB](https://www.mathworks.com/licensecenter/classroom/DC_3466915/). 
 - All students in the interactive stream should have been emailed a link to a temporary MATLAB license that can be used for this course. Contact KCNI.School@camh.ca with any questions.
 
-- Additional setup instructions are available in the [day6 folder](https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/day6
+- Additional setup instructions are available in the [day6 folder] (https://github.com/krembilneuroinformatics/kcni-school-lessons/tree/master/day6)
 
 | Time (EST) | Session | |
 |---- |----|---|
+| 9:00-10:30	| Lecture 1: Modelling Cognition using Bayesian Inference | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/21) |
 | 10:45-12:15	| Tutorial 1:  Modelling Abnormal Beliefs (Delusions) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/22) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Lecture 2: Integration of Neuroimaging and Electrophysiological Data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/23) |
