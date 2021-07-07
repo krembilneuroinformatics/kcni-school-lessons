@@ -28,7 +28,7 @@ Assignments
 
 	a. What clinical condition do you want to simulate?
 	
-	b. What parameters could you change to simulate belief updating corresponding to this condition?
+	b. What parameters could you change to simulate belief trajectories corresponding to this condition?
 	
 	c. Could you obtain similar belief trajectories using a different set of parameters?
 
