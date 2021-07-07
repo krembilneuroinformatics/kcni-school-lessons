@@ -9,7 +9,15 @@ tutorials cover two main topics:
 - Simulating and analyzing spiking from neurons and microcircuits
 - Simulating and analyzing EEG signals from brain microcircuits
 
-## Running the Docker Environment (to be done before Tutorial 1)
+You can run today's code in either a) a docker or b) using binder. Steps on how to get up and running are below:
+
+## Option 1: Running a binder (to be done before Tutorial 1):
+
+Follow this link to the main repo (1 folder up): https://github.com/krembilneuroinformatics/kcni-school-lessons
+
+Scroll down to Day 4, and click the 'binder' button. The binder will load in ~1 minute. 
+
+## Option 2: Running the Docker Environment (to be done before Tutorial 1)
 
 Below are the step necessary to get you up and running. You can copy and paste commands from below into your terminal.
 
