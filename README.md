@@ -59,7 +59,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Introduction to AI Ethics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/5) |
-| 10:45-12:15	| Lecture 2:  Fairness and Health Equity | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/6) |
+| 10:45-12:15	| Lecture 2:  Fairness and Health Equity [slides](day2/KCNISS_D2_Fairness_and_Health_Equity_in_Machine_Learning_Slides.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/6) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Workshop 1: Research Design, Data Collection, Model Construction and Validation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/7)  [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day2rstudio]|
 | 2:45-4:15pm	 | Workshop 2: Analysis, Interpretation and Knowledge Exchange and/or Translation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/8) |
