@@ -25,6 +25,7 @@ EEG Analysis
 Assignments
 ------------
 1. Use the HGF tutorial code to generate a specific subtype of a clinical condition that you would like to model (for example, MDD or Schizophrenia) reflecting.
+
 	a. What clinical condition do you want to simulate?
 	b. What parameters could you change to simulate belief updating corresponding to this condition?
 	C. Could you obtain similar belief trajectories using a different set of parameters?
