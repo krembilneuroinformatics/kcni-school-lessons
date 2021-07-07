@@ -1,6 +1,6 @@
 MATLAB code accompanying Day 4 of the KCNI school
 ===============
-This code runs on MATLAB R2020a, the license provided with this course. Please contact the teacher or the TAs if you do not have access to this license.
+This code runs on MATLAB R2020a, the license provided with this course. Please, contact the teacher or the TAs if you do not have access to this license.
 
 Getting Started
 ---------------
@@ -10,6 +10,11 @@ git clone --recursive https://github.com/krembilneuroinformatics/kcni-school-les
 ```
 2. Set your environment using `'kcni_setup_paths'`
 
+Tutorial: Modeling Abnormal Beliefs
+------------
+1. Set your environment using `'kcni_setup_paths'`
+2. Part 1: First steps with the HGF: Run `'HGF_tutorial_generate_task'` section by section
+3. Part 2: Simulating prototypical patients: Run `'HGF_tutorial_generate_learners'` section by section
 
 EEG Analysis
 ------------
@@ -19,10 +24,10 @@ EEG Analysis
 
 Assignments
 ------------
-1. Use the HGF tutorial code to generate a specific subtype of MDD reflecting `anhedonia` in terms of reduced reward expectations.
-
-	a. Which parameters did you change in order to achieve these belief trajectories?
-	b. Could you obtain similar belief trajectories using a different set of parameters?
+1. Use the HGF tutorial code to generate a specific subtype of a clinical condition that you would like to model (for example, MDD or Schizophrenia) reflecting.
+	a. What clinical condition do you want to simulate?
+	b. What parameters could you change to simulate belief updating corresponding to this condition?
+	C. Could you obtain similar belief trajectories using a different set of parameters?
 
 2. Use the EEG tutorial code to compare the top 30% of `prediction error (PE) signals` generating pseudo-conditions and ERPs of the top 30% and bottom 30% of PE. 	
 
