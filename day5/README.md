@@ -1,9 +1,15 @@
-# KCNI School Day 3 Tutorial 2: Meso-scale, Whole-Brain Physiological Modelling
+# KCNI School Day 5: Whole-Brain Modelling and Neuroimaging Connectomics
+
+Dr. John Griffiths and Dr. Erin Dickie
+
 
 Two ways to run this tutorial: 
 
-1. In the second kcni school `Docker` container  
-2. In `Google Colab`
+1. In Google Colab (recommended)  
+2. On a local Python installation  
+3. In the Docker  
+4. In the Binder  
+
 
 ---
 
@@ -15,7 +21,7 @@ Click File --> Open --> Github
 
 Copy and paste this URL: `https://github.com/krembilneuroinformatics/kcni-school-lessons`, then press Enter.
 
-Choose the `IntroToWholeBrainMesoScaleModelling.ipynb` notebook
+Choose the day5 notebook of interest 
 
 Uncomment the contents of the cell with `!pip install` commands. 
 
