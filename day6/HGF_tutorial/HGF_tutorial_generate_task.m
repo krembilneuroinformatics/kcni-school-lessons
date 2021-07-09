@@ -23,10 +23,11 @@
 
 
 %% Defaults
-% Sets axis font size (this may depend on your screen size, you can
-% increase it to 20, if the font is too small).
-set(0,'defaultAxesFontSize', 18); 
+kcni_setup_paths; % Set up paths on your machine
 random_seed = 999; % Random seed for simulations
+% Sets axis font size (this may depend on your screen size, you can
+% increase it to 20, if the font is too small or decrease it).
+set(0,'defaultAxesFontSize', 18); 
 
 
 %% PART 1: Generate probability structure 
@@ -42,7 +43,7 @@ vol_struct = repmat(prob_struct, n_trials, 1);
 vol_struct = vol_struct(:);
 
 % Let's see what it looks like
-figure('units','normalized','outerposition',[0 0 1 1])
+figure('units','normalized','outerposition',[0 0 .96 1])
 plot(vol_struct, 'k');
 xlim([0, last_trial]);
 ylim([-0.05, 1.05]);
@@ -57,7 +58,7 @@ rng(random_seed); % Set random seed to make sure, we all see the same results
 u = binornd(1, vol_struct);
 
 % Let's add them to the plot
-figure('units','normalized','outerposition',[0 0 1 1])
+figure('units','normalized','outerposition',[0 0 .96 1])
 hold on;
 plot(vol_struct, 'k');
 plot(u,'.', 'Color', [0 0.6 0], 'MarkerSize', 12);
@@ -215,7 +216,7 @@ est_rw = tapas_fitModel(sim.y,...
 
 % Plot Correlation
 tapas_fit_plotCorr(est_rw)
-colormap(flipud(gray))                 % Change colormap to gray
+colormap(flipud(gray))                    % Change colormap to gray
 add_values_to_imagesc(est_rw.optim.Corr); % Add correlation values to plot
 
 % Plot Trajectory
@@ -231,7 +232,7 @@ lr_hgf_lvl1 = est.traj.muhat(:,1).*(1-est.traj.muhat(:,1)).*est.traj.sahat(:,2);
 lr_hgf_lvl3 = est.traj.sahat(:,3).*est.traj.w(:,2);
 
 % Now we can plot them.
-figure('units','normalized','outerposition',[0 0 1 1])
+figure('units','normalized','outerposition',[0 0 .96 1])
 hold on;
 plot(lr_rw, 'b');
 plot(lr_hgf_lvl1, 'r');

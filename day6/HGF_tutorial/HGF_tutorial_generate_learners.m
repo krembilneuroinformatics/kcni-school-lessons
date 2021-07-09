@@ -22,10 +22,11 @@
 
 
 %% Defaults
+kcni_setup_paths; % Set up paths on your machine
+random_seed = 999; % Random seed for simulations
 % Sets axis font size (this may depend on your screen size, you can
 % increase it to 20, if the font is too small or decrease it).
 set(0,'defaultAxesFontSize', 18); 
-random_seed = 999; % Random seed for simulations
 
 
 %% PART 1: Design your task
@@ -45,7 +46,7 @@ rng(random_seed); % Set random seed to make sure, we all see the same results
 u = binornd(1, vol_struct);
 
 % Plot the design
-figure('units','normalized','outerposition',[0 0 1 1])
+figure('units','normalized','outerposition',[0 0 .96 1])
 hold on;
 plot(vol_struct);
 plot(u,'.', 'Color', [0 0.6 0], 'MarkerSize', 12);
@@ -65,12 +66,12 @@ ylabel('Probability of Outcome ''1''')
 
 % Get Bayes optimal parameters given the input
 bopars = tapas_fitModel([], u,...           % experimental input
-    'KCNI2020_hgf_ar1_lvl3_config',...      % perceptual model function
+    'kcni_hgf_ar1_lvl3_config',...      % perceptual model function
     'tapas_bayes_optimal_binary_config',... % observational model function
     'tapas_quasinewton_optim_config');      % optimization function
 % Simulate how this agent would respond to seeing this input.
 sim = tapas_simModel(u,...
-    'KCNI2020_hgf_ar1_lvl3', bopars.p_prc.p,...
+    'kcni_hgf_ar1_lvl3', bopars.p_prc.p,...
     'tapas_unitsq_sgm', 5,...
     random_seed);
 plot_hgf_binary_traj(sim);
@@ -95,7 +96,7 @@ parameter = 'ka2'; % Change the parameter you want to investigate
 sims = cell(0);
 for idx_sim = 1: length(parameter_array)
     sims{idx_sim} = tapas_simModel(u, ...
-        'KCNI2020_hgf_ar1_lvl3',...
+        'kcni_hgf_ar1_lvl3',...
         [bopars.p_prc.p(1:parameter_idx-1) parameter_array(idx_sim) bopars.p_prc.p(parameter_idx+1:end)],...
         'tapas_unitsq_sgm', 5,...
         random_seed);
@@ -131,7 +132,7 @@ parameter_value = -1;    % Or other parameter values
 parameter_idx = get_hgf_parameter_index(parameter);
 
 person1 = tapas_simModel(u, ...
-        'KCNI2020_hgf_ar1_lvl3' ,...
+        'kcni_hgf_ar1_lvl3' ,...
         [bopars.p_prc.p(1:parameter_idx-1) parameter_value bopars.p_prc.p(parameter_idx+1:end)],...
         'tapas_unitsq_sgm', 5,...
         random_seed);
@@ -142,7 +143,7 @@ parameter_value = 3;   % Or other parameter values
 parameter_idx = get_hgf_parameter_index(parameter);
 
 person2 = tapas_simModel(u, ...
-        'KCNI2020_hgf_ar1_lvl3' ,...
+        'kcni_hgf_ar1_lvl3' ,...
         [bopars.p_prc.p(1:parameter_idx-1) parameter_value bopars.p_prc.p(parameter_idx+1:end)],...
         'tapas_unitsq_sgm', 5,...
         random_seed);
