@@ -2,7 +2,7 @@
 
 % Indicate the path to the directory */day4/eeg on your PC:
 % For example: maindir = 'C:\kcni-school-lessons\day4\eeg';
-maindir = '/Users/drea/Documents/Courses/KCNISummerSchool/eeg';
+maindir = 'C:\projects\KCNI-Summerschool\day6\eeg';
 
 % set all analysis options and provide the path to the data
 options = mmn_set_analysis_options(maindir);
