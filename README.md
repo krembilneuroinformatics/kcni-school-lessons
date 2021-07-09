@@ -108,16 +108,17 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 **TA's** Shreyas Harita, Jerrold Jeyachandra, Kevin Kadak
 
-**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment) This code can also be run in our school binder instance [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter]
+**Computing Environment**: we will use our custom python/neurophysiology docker, available at dockerhub `edickie/kcnischool-jupyter`. [go here for more info on setting up the environment](https://github.com/krembilneuroinformatics/kcni-school-lessons/blob/master/envs/README.md#running-the-jupyter-physiological-modeling-environment) 
++ Or open the code in google colab [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab]
 
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Introduction to neuroimaging connectomics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/17) |
-| 10:45-12:15	| Workshop 1: Calculating Neuroimaging Connectomes | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/18) |
+| 9:00-10:30	| Lecture 1: Introduction to neuroimaging connectomics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/17) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]|
+| 10:45-12:15	| Workshop 1: Calculating Neuroimaging Connectomes | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/18)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab] |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
-| 1:00-2:30pm	 | Lecture 2: Intro to whole-brain modelling (Lecture) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/19) |
-| 2:45-4:15pm	 | Workshop 2:  simulating whole-brain activity, EEG, evoked responses, brain stimulation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/20) |
+| 1:00-2:30pm	 | Lecture 2: Intro to whole-brain modelling (Lecture) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/19)] |
+| 2:45-4:15pm	 | Workshop 2:  simulating whole-brain activity, EEG, evoked responses, brain stimulation | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/20)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab] |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
 ## Day 6: Bayesian Models of Learning and Integration of Neuroimaging Data  (July 12, 2021)
@@ -193,5 +194,6 @@ The 2020 Summer School content is archive in the 2020 release https://github.com
 [link_binder_day3rstudio]: https://mybinder.org/v2/gh/keon-arbabi/kcni-summer-school-day-3.git/HEAD?urlpath=rstudio
 [link_binder_day45jupyter]: https://mybinder.org/v2/gh/krembilneuroinformatics/binder-jupyter-school/HEAD?urlpath=git-pull?repo=https://github.com/krembilneuroinformatics/kcni-school-lessons
 [link_binder_day78rstudio]: http://mybinder.org/v2/gh/krembilneuroinformatics/kcni-school-lessons/HEAD?urlpath=rstudio
+[link_colab]: https://colab.research.google.com/github/krembilneuroinformatics/kcni-school-lessons/
 [link_gathertown]: https://gather.town/i/HmElpLkR
 

@@ -19,3 +19,6 @@
 [submodule "day3/kcni-summer-school-day-3"]
 	path = day3/kcni-summer-school-day-3
 	url = https://github.com/keon-arbabi/kcni-summer-school-day-3.git
+[submodule "envs/binder-jupyter-school"]
+	path = envs/binder-jupyter-school
+	url = https://github.com/krembilneuroinformatics/binder-jupyter-school.git
