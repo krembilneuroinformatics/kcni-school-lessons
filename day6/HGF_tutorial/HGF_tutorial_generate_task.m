@@ -23,7 +23,6 @@
 
 
 %% Defaults
-kcni_setup_paths; % Set up paths on your machine
 random_seed = 999; % Random seed for simulations
 % Sets axis font size (this may depend on your screen size, you can
 % increase it to 20, if the font is too small or decrease it).
