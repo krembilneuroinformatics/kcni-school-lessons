@@ -1,9 +1,24 @@
 # KCNI School Day 5: Whole-Brain Modelling and Neuroimaging Connectomics
 
-Dr. John Griffiths and Dr. Erin Dickie
+[![Open in Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JohnGriffiths/ScinetSS2020_BrainNetworkModelling/master) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krembilneuroinformatics/kcni-school-lessons/)
 
 
-Two ways to run these tutorials: 
+## Part 1: Neuroimaging Connectomics
+
+***Presented by*** *Dr. Erin Dickie and Dr. John Griffiths*
+
+***Developed by*** *JG, ED, Neuro Carpentry, and many other good people*
+
+
+## Part 2: Whole-Brain Modelling
+
+***Presented by*** Dr. John Griffiths
+
+***Developed by*** JG ( With essential contributions from: Julie Courtiol, Amanda Easson, Kelly Shen, Jerry Jeyachandra )
+
+
+
+Ways to run these tutorials: 
 
 1. In Google Colab (recommended)  
 2. On a local Python installation  
@@ -14,6 +29,10 @@ Two ways to run these tutorials:
 ---
 
 ## To run on Google Colab:
+
+Click on the 'Open in Colab' link above
+
+OR
 
 Go to https://colab.research.google.com.
 
