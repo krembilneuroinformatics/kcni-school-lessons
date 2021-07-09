@@ -3,7 +3,7 @@
 Dr. John Griffiths and Dr. Erin Dickie
 
 
-Two ways to run this tutorial: 
+Two ways to run these tutorials: 
 
 1. In Google Colab (recommended)  
 2. On a local Python installation  
