@@ -17,7 +17,7 @@ Tutorial 1: Modeling Abnormal Beliefs
 2. Part 1: First steps with the HGF: Run `'HGF_tutorial_generate_task'` section by section (you can do so by clicking in the corresponding section of the script and clicking the 'Run and Advance' Button at the top of the Matlab window next to the green triangle labelled 'Run').
 3. Part 2: Simulating prototypical patients: Run `'HGF_tutorial_generate_learners'` section by section
 
-Tutorial 2: Modeling Neuroimaging Data
+Tutorial 2: Dynamic Causal Modeling for fMRI
 ------------
 1. Set your environment using `'kcni_setup_paths'`
 2. The master script is `'DCMCompareDemo'`. We will run it section by section to understand the different steps involved in the analysis. 
