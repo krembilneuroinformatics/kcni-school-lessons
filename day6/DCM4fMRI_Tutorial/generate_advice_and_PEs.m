@@ -18,7 +18,7 @@ for iStages = 1:nstages
 end
 
 % simulate HGF model dynamics to obtain PEs
-sim = tapas_simModel2(u, 'tapas_hgf_binary', [NaN 0 1 NaN 1 1 NaN 0 0 NaN 1 NaN -2 -6], 'tapas_unitsq_sgm', 5);
+sim = tapas_simModel2(u, 'tapas_hgf_binary2', [NaN 0 1 NaN 1 1 NaN 0 0 NaN 1 NaN -2 -6], 'tapas_unitsq_sgm2', 5);
 
 % plot advice distribution and PEs
 figure('WindowStyle', 'docked');
