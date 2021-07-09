@@ -14,7 +14,7 @@ DCM.U.u(indU1,2)    = eps2(:);
 %% 2) Specify DCM settings 
 
 % set priors
-DCM.a = ones(2,2);    % ?
+DCM.a = zeros(2,2);    
 DCM.b = zeros(2,2,2);
 DCM.c = zeros(2,2);
 DCM.d = zeros(2,2,0);    
@@ -23,34 +23,10 @@ DCM.d = zeros(2,2,0);
 DCM.Ep.D       = zeros(2,2,0); 
 DCM.Ep.transit = sparse(2,1);
 DCM.Ep.decay   = sparse(2,1);
-DCM.Ep.epsilon = 0;
+DCM.Ep.epsilon = 0;  
 
-% define connections    
-DCM.M.m  = 2;         % number of inputs? 
-DCM.M.n  = 10;        % ?
-DCM.M.l  = 2;         % ?
-DCM.M.N  = 32;        % ?
-DCM.M.dt = 0.5;       % ?
-
-DCM.options.nonlinear  = 0;
-DCM.options.two_state  = 0;
-DCM.options.stochastic = 0;
-DCM.options.centre     = 0;
-DCM.options.endogenous = 0;
-DCM.options.nmax       = 8;
-DCM.options.nN         = 32;
-DCM.options.hidden     = [];
-DCM.options.induced    = 0;
-
-DCM.M.IS     = 'spm_int';
-DCM.M.f      = 'spm_fx_fmri';
-DCM.M.g      = 'spm_gx_fmri';
-DCM.M.x      = sparse(2,5);
-DCM.M.TE     = 0.04;          % echo time
-
-DCM.U.dt     = 0.2;           % ? 
-DCM.U.name   = {'Driving','Modulating'};
-            
+DCM.U.dt     = 0.2;          
+DCM.U.name   = {'Driving','Modulating'};            
 
 % neuronal 1     = simualate for output of neuronal states (finer time steps)
 % neuronal 0     = simualate for output of BOLD states (coarser time steps)
@@ -64,9 +40,7 @@ for neuronal = 1:-1:0
         DCM.Y.dt = 2;
     end
     
-    DCM.delays    = DCM.Y.dt/2*ones(2,1);  % ?
-    DCM.M.delays  = DCM.delays;
-    DCM.M.ns      = DCM.v;    
+    DCM.delays    = DCM.Y.dt/2*ones(2,1); 
     
     %% 3) Simulate DCM region time courses   
     
