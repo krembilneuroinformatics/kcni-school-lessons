@@ -19,7 +19,7 @@ Tutorial 1: Modeling Abnormal Beliefs
 Tutorial 2: Modeling Neuroimaging Data
 ------------
 1. Set your environment using `'kcni_setup_paths'`
-2. Main script is `'DCMCompareDemo'`
+2. The master script is `'DCMCompareDemo'`. We will run it section by section to understand the different steps involved in the analysis. 
 
 Assignments
 ------------
@@ -30,7 +30,3 @@ Assignments
 	b. What parameters could you change to simulate belief trajectories corresponding to this condition?
 	
 	c. Could you obtain similar belief trajectories using a different set of parameters?
-
-2. Use the Modeling Neuroimaging Data tutorial code to compare the top 30% of `prediction error (PE) signals` generating pseudo-conditions and ERPs of the top 30% and bottom 30% of PE. 	
-
-	a. Can you model these effects with DCM, and if yes, do you obtain the same connectivity parameter estimates?
