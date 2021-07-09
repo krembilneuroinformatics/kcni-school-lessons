@@ -227,15 +227,15 @@ hold on; plot(vol_struct, 'k:'); hold off; % Plot volatility structure
 % Now let's compare the learning rates for the two models. To do this, we
 % first need to compute them.
 lr_rw = est_rw.p_prc.al.*ones(size(est_rw.traj.v(:,1),1),1);
-lr_hgf_lvl1 = est.traj.muhat(:,1).*(1-est.traj.muhat(:,1)).*est.traj.sahat(:,2);
-lr_hgf_lvl3 = est.traj.sahat(:,3).*est.traj.w(:,2);
+lr_hgf_low_lvl = est.traj.muhat(:,1).*(1-est.traj.muhat(:,1)).*est.traj.sahat(:,2);
+lr_hgf_high_lvl = est.traj.sahat(:,3).*est.traj.w(:,2);
 
 % Now we can plot them.
 figure('units','normalized','outerposition',[0 0 .96 1])
 hold on;
 plot(lr_rw, 'b');
-plot(lr_hgf_lvl1, 'r');
-plot(lr_hgf_lvl3, 'c');
+plot(lr_hgf_low_lvl, 'r');
+plot(lr_hgf_high_lvl, 'c');
 plot(u,'.', 'Color', [0 0.6 0], 'MarkerSize', 12); % Plot input
 plot(vol_struct, 'k:'); % Plot volatility structure
 hold off;
@@ -244,7 +244,7 @@ ylim([-0.05, 1.05])
 title('Learning Rates: RW versus HGF');
 xlabel('Trials');
 ylabel('Learning Rates');
-legend('RW', 'HGF LVL1', 'HGF LVL3', 'Input', 'Probability',...
+legend('RW', 'HGF Low lvl', 'HGF High lvl', 'Input', 'Probability',...
     'Position', [0.78 0.6 0.1 0.2]);
 
 
