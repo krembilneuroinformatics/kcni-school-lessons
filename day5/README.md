@@ -48,3 +48,21 @@ Choose the day5 notebook of interest
 
 Uncomment the contents of the cell with `!pip install` commands. 
 
+## To run with Docker
+
+The docker was recently (July 8) updated of these lessons - to work with docker - please pull the most recent version.
+
+```sh
+docker pull edickie/kcnischool-jupyter
+```
+
+The navigate to the folder and open:
+
+```sh
+# make sure you are in the kcni-school-lession folder
+cd kcni-school-lessons
+
+# start docker
+docker compose up jupyter
+```
+
