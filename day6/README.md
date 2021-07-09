@@ -8,7 +8,8 @@ Getting Started
 ```
 git clone --recursive https://github.com/krembilneuroinformatics/kcni-school-lessons.git
 ```
-2. Set your environment using `'kcni_setup_paths'`
+2. Open Matlab and navigate to the kcni-school-lessons/day6 folder.
+3. Set your environment by running `'kcni_setup_paths'`
 
 Tutorial 1: Modeling Abnormal Beliefs
 ------------
