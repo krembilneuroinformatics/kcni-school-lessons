@@ -148,15 +148,20 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 **TA's**: Marta Maslej, Grace Jacobs, Mohamed Abdelhack, Amin Kharaghani, Milos Milic, Earvin Tio
 
-**Computing Environment**: we will continue to use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [our docker setup instructions](../kcni-school-lessons/envs/README.md)
+**Computing Environment**: 
+Workshop 1 today will use push and pull data to the synapse platform for sharing biomedical datasets using the `synapseClient` python package. In order to be able to run all the commands in tutorial 1, a "verified" synapse account is required. _For folks who are not able to create an account or get certified before the session tomorrow the instructor will cover the concepts for tractable data analysis that can still be generally applicable beyond synapse platform_. Getting a Verified Account is a two step process.
+ - Step 1: Create an account on synapse - https://www.synapse.org/#!RegisterAccount:0
+ - Step 2: Become Certified (allows to upload data to synapse) by passing the synpase quiz to show you understand data use principles - https://www.synapse.org/#!Quiz:Certification
+
+Workshop 2 will demonstrate how to use the synapse platform for analysis for a combined analysis of several restricted access datasets. Getting access to all these datasets is more time consuming than would be feasible for any student in this course, but we hope that students will find the demostration useful. 
 
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Digital Health for Mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/25) |
 | 10:45-12:15	| Lecture 2: Population-based resources and the BrainHealth Databank | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/26) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
-| 1:00-2:30pm	 | Workshop 1: accessing reproducible datasets from Synapse as part of integrated workflow | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/27) |
-| 2:45-4:15pm	 | Workshop 2: Introduction to interactive methods | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/28) |
+| 1:00-2:30pm	 | Workshop 1: accessing reproducible datasets from Synapse as part of integrated workflow (_Note: a "certified" synpase account is required for all code to run_) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/27) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/apratap/synapseTutorials.git/HEAD)|
+| 2:45-4:15pm	 | Workshop 2: Introduction to interactive methods (_demonstates a workflow using several resticted access datasets_) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/28) |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
 ## Day 8:  Integrative research methods and Final Panel Discussion (July 14, 2021)
@@ -165,7 +170,7 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 **TA's**: Marta Maslej, Mohamed Abdelhack, Amin Kharaghani, Milos Milic, Earvin Tio
 
-**Computing Environment**: we will continue to use our custom rstudio docker, available from dockerhub `edickie/kcnischool-rstudio:latest` [our docker setup instructions](../kcni-school-lessons/envs/README.md)
+**Computing Environment**: 
 
 | Time (EST) | Session | |
 |---- |----|---|
