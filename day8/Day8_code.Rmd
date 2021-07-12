@@ -37,7 +37,7 @@ Once the kcni-school-lessons git repo has been cloned, you will be able to load 
 Read in Phenotype data with our primary outcomes of interest
 ```{r}
 
-pheno_long <- readRDS(here("day5","pheno","longdat.rds"))
+pheno_long <- readRDS(here("day8","pheno","longdat.rds"))
 head(pheno_long)
 
 pheno_wide <- reshape(pheno_long, 
@@ -54,13 +54,13 @@ head(pheno_wide)
 3. epigenomic environmental exposure (methylation cpgs)  
 
 ```{r}
-expr <- readRDS(here("day5", "snfdata", "expr.rds"))
+expr <- readRDS(here("day8", "snfdata", "expr.rds"))
 expr[1:5,1:5]
 
-eeg <- readRDS(here("day5", "snfdata", "eeg.rds"))
+eeg <- readRDS(here("day8", "snfdata", "eeg.rds"))
 eeg[1:5,1:5]
 
-meth <- readRDS(here("day5","snfdata","methyl.rds"))
+meth <- readRDS(here("day8","snfdata","methyl.rds"))
 meth[1:5,1:5]
 ```
 
@@ -111,7 +111,7 @@ newdat <- complete(imp)
 paste0("Missing observations remaining = ",sum(is.na(newdat)))
 ```
 
-Hey wait, I thought we were imputing missing values!? Not-so-fun fact - the mice algorithm will not impute variables that are perfectly co-linear with another variable. In our case, the age variables (age.0 and age.1) are perfectly colinear, because the time between visits is fixed (6 months).  
+Hey wait, I thought we were imputing missing values!? Not-so-fun fact - the mice algorithm will not impute variables that are perfectly co-linear with at least one other variable. In our case, the age variables (age.0 and age.1) are perfectly co-linear, because the time between visits is fixed (6 months).  
 ```{r}
 plot(pheno_wide$age.0,pheno_wide$age.1)
 
@@ -192,6 +192,7 @@ clusters$phenoid <- idkey$phenoid[match(clusters$snfid,idkey$snfid)]
 # examine the clusters dataframe
 head(clusters)
 ```
+
 
 
 ### 6. Test for associations of group membership with witheld variables
@@ -296,6 +297,55 @@ It's good practice to add a call to `sessionInfo`. This will add a log of what R
 
 ```{r}
 sessionInfo()
+```
+
+
+### 8. If time, nice network plots in R
+
+Load packages
+```{r}
+library(network,quietly = T,warn.conflicts = F)
+library(sna,quietly = T,warn.conflicts = F)
+library(ggplot2,quietly = T,warn.conflicts = F)
+library(ggnetwork,quietly = T,warn.conflicts = F)
+library(reshape2,quietly = T,warn.conflicts = F)
+library(stringr,quietly = T,warn.conflicts = F)
+library(ggsci,quietly = T,warn.conflicts = F)
+
+```
+
+Reshape the fused network into a long-format table, define edges and nodes, subset to "linked" nodes
+```{r}
+netdf <- melt(lower.tri.remove(networkW)) # matrix is symmetrical, we designate half of it at NA with lower.tri.remove
+names(netdf)[1:2] <- c("sub1","sub2")
+netdf$sub1 <- str_pad(netdf$sub1,4,"left","0") # the melting procedure has turned our character strings into numeric, fix
+netdf$sub2 <- str_pad(netdf$sub2,4,"left","0")
+netdf <- netdf[complete.cases(netdf),]
+
+netdf_sub <- subset(netdf, value < 0.5 & sub1!=sub2)
+netdf_sub <- subset(netdf_sub, value > quantile(netdf_sub$value,0.95))
+```
+
+
+Format the edge list into a ggnetwork object - a flat data frame - for plotting with ggplot
+```{r}
+edges <- netdf_sub[,c("sub1","sub2")]
+
+edges_forplot <- network(edges,directed=F)
+x <- data.frame(vertices=network.vertex.names(edges_forplot))
+set.edge.attribute(edges_forplot,"similarity", netdf_sub$value)
+
+n <- ggnetwork(edges_forplot)
+n$cluster3 <- pheno2$clust3[match(n$vertex.names,pheno2$id)]
+n$cluster4 <- pheno2$clust4[match(n$vertex.names,pheno2$id)]
+
+ggplot(n, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_edges(aes(size=similarity),curvature=0,show.legend = F) +
+  geom_nodes(aes(fill=cluster4,shape=vertex.dx),alpha=0.9,size=7,pch=21,col="black") +  # try substituting cluster3 with cluster4!
+  scale_size_continuous(range=c(0.1,3))+
+  scale_fill_jco()+
+  labs(title="Fused similarity network (n=106)")+
+  theme_blank()
 ```
 
 
