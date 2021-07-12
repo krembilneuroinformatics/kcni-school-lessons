@@ -27,7 +27,7 @@ sim = generate_advice_and_PEs;
 
 % set the number of regions and their names
 DCM.n      = 2;
-DCM.Y.name = {'TPJ','dmPFC'}; 
+DCM.Y.name = {'TPJ','dmPFC'};
 
 % set connectivity matrices for simulating DCM data (modulate b21)
 DCM.Ep.A        = [0 0.4; 0.4 0]; % intrinsic
@@ -53,8 +53,7 @@ DCMInput.c = [1 0; 0 0];           % driving input enters x_1
 % fit and save
 DCM = spm_dcm_estimate(DCMInput);
 save DCMnomod DCM; clear DCM
-
-
+%--------------------------------------------------------------------------
 % Model 2: PE modulates dmPFC self-inhibition
 DCMInput.a        = [0 1; 1 0];    % intrinsic connectivity
 DCMInput.b        = zeros(2,2,2);  % no modulation
@@ -64,8 +63,7 @@ DCMInput.c        = [1 0; 0 0];    % driving input enters x_1
 % fit and save
 DCM = spm_dcm_estimate(DCMInput);
 save DCMmodb22 DCM; clear DCM
-
-
+%--------------------------------------------------------------------------
 % Fit model 3: PE modulates forward connection from TPJ to dmPFC
 DCMInput.a        = [0 1; 1 0];    % intrinsic connectivity
 DCMInput.b        = zeros(2,2,2);  % no modulation
