@@ -14,6 +14,8 @@ end
 if nargin < 4
     plotPE=false;
 end
+
+
 %% Set Perceptual and Response Models
 rp_model= {'KCNI2020_constant_voltemp_exp'};
 if iModel == 1
@@ -23,11 +25,12 @@ else
     prc_model= {'KCNI2020_hgf_ar1_lvl3'};
 end
 
+
 %% Define parameters that do not change
 ze=exp(0.5);
 beta=log(48);
 
-plotmu2hat=false;
+plotmu2hat = false;
 probabilityStructure = [0.8,0.8,0.8,0.10,0.10,0.90,0.10,0.80,0.20,0.5];
 nTrials = 21;
 

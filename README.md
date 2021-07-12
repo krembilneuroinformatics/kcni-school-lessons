@@ -114,7 +114,7 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Introduction to neuroimaging connectomics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/17) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]|
+| 9:00-10:30	| Lecture 1: Introduction to neuroimaging connectomics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/17) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab]|
 | 10:45-12:15	| Workshop 1: Calculating Neuroimaging Connectomes | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/18)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab] |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Lecture 2: Intro to whole-brain modelling (Lecture) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/19)] |

@@ -2,10 +2,10 @@
 
  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krembilneuroinformatics/kcni-school-lessons/)
 
-Binder for other bits: [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter]
+Binder for other bits: [![Binder](https://mybinder.org/badge_logo.svg)](link_binder_day45jupyter)
 Note: The binder link will not work for parts of some parts of notebook 3
 
-Binder for Whole Brian Modeling [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JohnGriffiths/ScinetSS2020_BrainNetworkModelling/master)
+Binder for Whole Brain Modelling [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JohnGriffiths/ScinetSS2020_BrainNetworkModelling/master)
 
 ## Part 1: Neuroimaging Connectomics
 
