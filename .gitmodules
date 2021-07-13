@@ -22,3 +22,6 @@
 [submodule "envs/binder-jupyter-school"]
 	path = envs/binder-jupyter-school
 	url = https://github.com/krembilneuroinformatics/binder-jupyter-school.git
+[submodule "day7/synapseTutorials"]
+	path = day7/synapseTutorials
+	url = https://github.com/apratap/synapseTutorials.git
