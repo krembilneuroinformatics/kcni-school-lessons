@@ -15,6 +15,7 @@ library(SNFtool)
 library(mice)
 library(rms)
 library(here)
+library(tidyverse)
 ```
 
 ---
@@ -40,10 +41,14 @@ Read in Phenotype data with our primary outcomes of interest
 pheno_long <- readRDS(here("day8","pheno","longdat.rds"))
 head(pheno_long)
 
-pheno_wide <- reshape(pheno_long, 
-                      direction='wide',
-                      timevar="time",
-                      idvar=c("id","geno1","geno2","geno3","msex","dx"))
+pheno_wide <- pheno_long %>%
+  pivot_longer(cols = c(age, img1:ses),
+               names_to = "measure",
+               values_to = "vals") %>%
+  pivot_wider(names_from = c("measure","time"),
+              values_from = "vals",
+              id_cols=c("id","msex","dx",starts_with("geno")))
+
 head(pheno_wide)
 ```
 
@@ -113,11 +118,11 @@ paste0("Missing observations remaining = ",sum(is.na(newdat)))
 
 Hey wait, I thought we were imputing missing values!? Not-so-fun fact - the mice algorithm will not impute variables that are perfectly co-linear with at least one other variable. In our case, the age variables (age.0 and age.1) are perfectly co-linear, because the time between visits is fixed (6 months).  
 ```{r}
-plot(pheno_wide$age.0,pheno_wide$age.1)
+plot(pheno_wide$age_0,pheno_wide$age_1)
 
 # let's simplify things and create one age variable, representing age at baseline (age.0)
-pheno_wide$age <- pheno_wide$age.0
-pheno_wide$age.1 <- NULL
+pheno_wide$age <- pheno_wide$age_0
+pheno_wide$age_1 <- NULL
 ```
 
 So in reality, we haven't lost any information and all remaining variables have been imputed successfully.
@@ -217,9 +222,9 @@ ggplot(data=dx_plot, aes(x=as.factor(clust), y=count, fill=dx)) +
 
 ```{r}
 # let's test a primary outcome: change in depression score between time 0 and 1, i.e. before/after treatment (cog3diff)
-pheno$cog3diff <- pheno$cog3.1 - pheno$cog3.0
+pheno$cog3diff <- pheno$cog3_1 - pheno$cog3_0
 
-mod1 <- lm(data=pheno, cog3diff ~ as.factor(clust4) + msex + age + ses.0)
+mod1 <- lm(data=pheno, cog3diff ~ as.factor(clust4) + msex + age + ses_0)
 anova(mod1)
 summary(mod1)
 
@@ -231,7 +236,7 @@ ggplot(data=pheno, aes(x=as.factor(clust4), y=cog3diff,col=as.factor(clust4))) +
   theme_minimal()
 
 # how does this compare with predictive power for classical diagnoses?
-mod2 <- lm(data=pheno, cog3diff ~ as.factor(dx) + msex + age + ses.0)
+mod2 <- lm(data=pheno, cog3diff ~ as.factor(dx) + msex + age + ses_0)
 anova(mod2)
 summary(mod2)
 
@@ -247,8 +252,8 @@ ggplot(data=pheno, aes(x=as.factor(dx), y=cog3diff,col=as.factor(dx))) +
 
 pheno$resp <- as.factor(ifelse(pheno$cog3diff < 0,"responder","nonresponder"))
 
-mod3 <- lrm(data=pheno, resp ~ clust4 + msex + age + ses.0)
-mod4 <- lrm(data=pheno, resp ~ dx + msex + age + ses.0)
+mod3 <- lrm(data=pheno, resp ~ clust4 + msex + age + ses_0)
+mod4 <- lrm(data=pheno, resp ~ dx + msex + age + ses_0)
 
 results <- data.frame(snf=mod3$stats,dx=mod4$stats)
 results
@@ -306,24 +311,27 @@ Load packages
 ```{r}
 library(network,quietly = T,warn.conflicts = F)
 library(sna,quietly = T,warn.conflicts = F)
-library(ggplot2,quietly = T,warn.conflicts = F)
 library(ggnetwork,quietly = T,warn.conflicts = F)
-library(reshape2,quietly = T,warn.conflicts = F)
-library(stringr,quietly = T,warn.conflicts = F)
 library(ggsci,quietly = T,warn.conflicts = F)
-
 ```
 
 Reshape the fused network into a long-format table, define edges and nodes, subset to "linked" nodes
-```{r}
-netdf <- melt(lower.tri.remove(networkW)) # matrix is symmetrical, we designate half of it at NA with lower.tri.remove
-names(netdf)[1:2] <- c("sub1","sub2")
-netdf$sub1 <- str_pad(netdf$sub1,4,"left","0") # the melting procedure has turned our character strings into numeric, fix
-netdf$sub2 <- str_pad(netdf$sub2,4,"left","0")
-netdf <- netdf[complete.cases(netdf),]
 
-netdf_sub <- subset(netdf, value < 0.5 & sub1!=sub2)
-netdf_sub <- subset(netdf_sub, value > quantile(netdf_sub$value,0.95))
+```{r}
+netdf <- lower.tri.remove(networkW) # matrix is symmetrical, we designate half of it at NA with lower.tri.remove
+
+netdf <- as.data.frame(netdf) %>%
+  mutate(sub1 = row.names(.)) %>%
+  pivot_longer(!sub1,
+               names_to = "sub2",
+               values_to = "value") %>%
+  mutate(sub1 = str_pad(sub1,4, "left", "0"),
+         sub2 = str_pad(sub2,4, "left", "0")) 
+
+netdf_sub <- netdf %>%
+  drop_na(value) %>%
+  filter(value < 0.5 & sub1 != sub2) %>%
+  filter(value > quantile(value,0.95))
 ```
 
 
