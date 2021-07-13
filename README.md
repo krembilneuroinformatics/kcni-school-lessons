@@ -40,10 +40,10 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Welcome and Orientation + Neuroinformatics across scales - Sean Hill| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/1) |
-| 10:45-12:15	| Lecture 2:  Problems and opportunities in the diagnosis and treatment of major depression - Drs Victor Tang & Dr Brett Jones [download slides as pdf](day1/KCNISummerSchool-MDDClinicalTalk.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/2) |
+| 9:00-10:30	| Lecture 1: Welcome and Orientation + Neuroinformatics across scales - Sean Hill [slides](https://drive.google.com/file/d/1euPon3PUsoWbjYfHOCuOxF6avdhIAGRn/view?usp=sharing)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/1) |
+| 10:45-12:15	| Lecture 2:  Problems and opportunities in the diagnosis and treatment of major depression - Drs Victor Tang & Dr Brett Jones [slides](day1/KCNISS_day1_2_MDDCinical.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/2) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
-| 1:00-2:30pm	 | Workshop 1: Guiding principles for FAIR and open science  - Erin Dickie & Sejal Patel| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/3) |
+| 1:00-2:30pm	 | Workshop 1: Guiding principles for FAIR and open science  - Erin Dickie & Sejal Patel [slides](day1/KCNISS_day1_3_reproducibility.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/3) |
 | 2:45-4:15pm	 | Workshop 2: Tools for Reproducible Science - Erin Dickie & Sejal Patel rstudio example  [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day1rstudio]    jupyter example [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day1python] | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/4) |
 | 4:30-5:00pm	| Daily Social Chat? / Q & A | Join us in [gather.town][link_gathertown]|
 
