@@ -40,7 +40,7 @@ git clone --recurse-submodules https://github.com/krembilneuroinformatics/kcni-s
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Welcome and Orientation + Neuroinformatics across scales - Sean Hill [slides](https://drive.google.com/file/d/1euPon3PUsoWbjYfHOCuOxF6avdhIAGRn/view?usp=sharing)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/1) |
+| 9:00-10:30	| Lecture 1: Welcome and Orientation + Neuroinformatics across scales - Sean Hill [slides](day1/KCNISS_day1_1_Hill-compressed.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/1) |
 | 10:45-12:15	| Lecture 2:  Problems and opportunities in the diagnosis and treatment of major depression - Drs Victor Tang & Dr Brett Jones [slides](day1/KCNISS_day1_2_MDDClinical.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/2) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Workshop 1: Guiding principles for FAIR and open science  - Erin Dickie & Sejal Patel [slides](day1/KCNISS_day1_3_reproducibility.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/3) |
@@ -78,7 +78,7 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 | Time (EST) | Session | |
 |---- |----|---|
 | 9:00-10:30	| Lecture 1: Basics of Genotype, Central dogma, GWAS, and Polygenic Risk Scores | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/9) |
-| 10:45-12:15	| Lecture 2:  Transcriptomics at the single-cell and bulk level level | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/10) |
+| 10:45-12:15	| Lecture 2:  Transcriptomics at the single-cell and bulk level level [slides](day3/KCNISS_day3_2_Tripathy.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/10) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Workshop 1: Intro to transcriptomic data types, including single-cell and bulk RNAseq | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/11) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day3rstudio] |
 | 2:45-4:15pm	 | Workshop 2: Explore cellular changes in major depression using bulk and single-cell RNAseq data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/12) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day3rstudio] |
@@ -93,7 +93,7 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Simulating brain microcircuit activity in mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/13) |
+| 9:00-10:30	| Lecture 1: Simulating brain microcircuit activity in mental health [slides](day4/KCNISS_day4_Hay.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/13) |
 | 10:45-12:15	| Lecture 2: Simulating EEG from brain microcircuits in mental health | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/14) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:15pm	 | Workshop 1: Simulating and analyzing spiking from neurons and microcircuits | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/15) [![Binder](https://mybinder.org/badge_logo.svg)][link_binder_day45jupyter] |
@@ -114,7 +114,7 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Introduction to neuroimaging connectomics | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/17) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab]|
+| 9:00-10:30	| Lecture 1: Introduction to neuroimaging connectomics [slides](day5/KCNISS_day5_1_connectomics.pdf) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/17) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab]|
 | 10:45-12:15	| Workshop 1: Calculating Neuroimaging Connectomes | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/18)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)][link_colab] |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Lecture 2: Intro to whole-brain modelling (Lecture) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/19)] |
@@ -134,7 +134,7 @@ Run rstudio in binder [![Binder](https://mybinder.org/badge_logo.svg)][link_bind
 
 | Time (EST) | Session | |
 |---- |----|---|
-| 9:00-10:30	| Lecture 1: Modelling Cognition using Bayesian Inference | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/21) |
+| 9:00-10:30	| Lecture 1: Modelling Cognition using Bayesian Inference [slides](day6/KCNISS_day6_BayesianModelsofLearning.pdf)| Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/21) |
 | 10:45-12:15	| Tutorial 1:  Modelling Abnormal Beliefs (Delusions) | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/22) |
 | 12:15pm-1:00pm |	Lunch Break | Join us in [gather.town][link_gathertown]|
 | 1:00-2:30pm	 | Lecture 2: Integration of Neuroimaging and Electrophysiological Data | Watch on [Crowdcast](https://www.crowdcast.io/e/kcni-summer-school-2021/23) |
