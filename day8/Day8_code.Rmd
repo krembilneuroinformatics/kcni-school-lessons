@@ -1,5 +1,5 @@
 ---
-title: "Day 5 KCNI summer school"
+title: "Day 8 KCNI summer school"
 output:
   html_document:
     df_print: paged
